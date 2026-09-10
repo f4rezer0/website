@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fare Zero | Associazione culturale, Fab Lab &amp; community nerd</title>
+<meta name="description" content="Fare Zero: associazione culturale, Fab Lab, community open source e nerd dell'Alto Salento. Giochi di ruolo, da tavolo, videogames, hackathon e fabbricazione digitale.">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <img src="assets/icon.png" alt="" class="brand-icon">
+      <span class="brand-text">Fare<strong>Zero</strong></span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="#chi-siamo" class="nav-link">Chi siamo</a></li>
+        <li><a href="#fablab" class="nav-link">Fab Lab</a></li>
+        <li><a href="#opensource" class="nav-link">Open Source</a></li>
+        <li><a href="#nerdspace" class="nav-link">Nerd Space</a></li>
+        <li><a href="#ontour" class="nav-link">In giro per il Paese</a></li>
+        <li><a href="#contatti" class="nav-link nav-cta">Contatti</a></li>
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Apri il menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
+    <div class="hero-content">
+      <img src="assets/logo.png" alt="Fare Zero Makers - Fab Lab" class="hero-logo">
+      <p class="hero-kicker">Associazione culturale &middot; dal 2013 &middot; Alto Salento</p>
+      <h1 class="hero-title">Un ecosistema per nerd, maker e smanettoni</h1>
+      <p class="hero-lead">Dadi a venti facce, galassie lontane, righe di codice eleganti e macchinari futuristici: se ti pulsa il cuore per una di queste cose, sei già dei nostri.</p>
+      <div class="hero-actions">
+        <a href="#chi-siamo" class="btn btn-primary">Scopri chi siamo</a>
+        <a href="#contatti" class="btn btn-ghost">Entra in contatto</a>
+      </div>
+    </div>
+    <a href="#chi-siamo" class="scroll-cue" aria-label="Scorri per saperne di più"><span></span></a>
+  </section>
+
+  <!-- CHI SIAMO -->
+  <section class="section" id="chi-siamo">
+    <div class="section-inner">
+      <p class="section-tag">01 &middot; Chi siamo</p>
+      <h2 class="section-title">Benvenuti su Fare Zero</h2>
+
+      <div class="lead-block reveal">
+        <p>Se siete approdati su questa pagina, probabilmente condividiamo la stessa passione per dadi a venti facce, galassie lontane, righe di codice eleganti, macchinari futuristici e tutto ciò che rende meravigliosa la cultura nerd.</p>
+        <p>Non siamo solo un'associazione culturale: siamo una <em>taverna</em> sicura per avventurieri di ogni livello, un laboratorio di innovazione per menti creative, e un porto franco per chiunque ami sognare a occhi aperti o progettare il futuro tecnologico.</p>
+      </div>
+
+      <div class="two-col reveal">
+        <div>
+          <h3>La nostra storia</h3>
+          <p>Tutto è iniziato nel 2013 con un gruppo di amici, all'indomani di un convegno sulla presentazione del libro-manifesto <em>&laquo;Territorio Zero&raquo;</em> che il co-autore Angelo Consoli, direttore del CETRI-TIRES e collaboratore di Jeremy Rifkin, tenne a Francavilla Fontana (BR) nel marzo del 2013. In quell'occasione i futuri fondatori di FareZero.org, tutti appassionati di tecnologia open source, furono semplicemente folgorati dalle potenzialità che un progetto simile poteva dare.</p>
+          <p>Da quel &laquo;Tiro Salvezza&raquo; superato con successo, e dalla prima riga di codice compilata senza errori, siamo cresciuti. Abbiamo unito le forze per trasformare le nostre passioni individuali in un progetto collettivo, creando un vero e proprio ecosistema per i nerd, i maker e gli smanettoni di tutto l'Alto Salento.</p>
+        </div>
+        <div>
+          <h3>Un cantiere sempre aperto</h3>
+          <p>La nostra sede è un cantiere sempre aperto di idee, dadi che rotolano e repository in continuo aggiornamento. Ecco cosa troverete varcando la nostra soglia:</p>
+          <ul class="check-list">
+            <li><strong>Innovazione e Open Source</strong>: software libero, Linux Install Party, hackathon, privacy digitale ed etica informatica.</li>
+            <li><strong>Giochi di ruolo e da tavolo</strong>: dalle campagne epiche di D&amp;D ai giochi più strategici.</li>
+            <li><strong>Videogames e sviluppo</strong>: dal retrogaming all'indie dev, fino allo sviluppo videoludico.</li>
+            <li><strong>Cultura pop e fumetto</strong>: gruppi di lettura e cineforum a tema sci-fi e fantasy.</li>
+            <li><strong>Eventi e workshop</strong>: incontri con autori, miniature, cosplay making, bootcamp di programmazione.</li>
+          </ul>
+        </div>
+      </div>
+
+      <blockquote class="pull-quote reveal">Crediamo fermamente che la conoscenza, che si tratti della lore di Star Wars o del codice sorgente di un nuovo programma, sia fatta per essere condivisa.</blockquote>
+
+      <div class="lead-block reveal">
+        <p>Qui non facciamo test d'ingresso: non importa se sai a memoria l'albero genealogico dei Targaryen, se sei un maestro di Python, o se hai appena formattato il tuo primo PC. Il nostro obiettivo è promuovere la socialità, la curiosità intellettuale e l'inclusione attraverso la passione condivisa. Se hai voglia di imparare, divertirti e rispettare gli altri, sei già uno di noi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAB LAB -->
+  <section class="section section-alt" id="fablab">
+    <div class="section-inner">
+      <p class="section-tag">02 &middot; Fab Lab</p>
+      <h2 class="section-title">Dove l'idea diventa realtà</h2>
+
+      <div class="lead-block reveal">
+        <p>Immagina un luogo dove puoi entrare con un'idea in testa e uscire qualche ora dopo con un prototipo funzionante tra le mani. Un posto dove professionisti, studenti e semplici curiosi condividono macchinari avanzati, conoscenze e, soprattutto, la passione per il &laquo;creare&raquo;.</p>
+        <p>Il termine Fab Lab è l'abbreviazione di <em>Fabrication Laboratory</em>. Nato da un'idea del prof. Neil Gershenfeld al MIT nei primi anni 2000, oggi è una rete globale di laboratori aperti al pubblico, uniti dalla filosofia dell'open source e della condivisione della conoscenza.</p>
+      </div>
+
+      <div class="card-grid reveal">
+        <div class="tool-card">
+          <span class="tool-index">01</span>
+          <h3>Stampanti 3D</h3>
+          <p>Creano oggetti tridimensionali depositando materiale strato dopo strato.</p>
+        </div>
+        <div class="tool-card">
+          <span class="tool-index">02</span>
+          <h3>Taglio laser</h3>
+          <p>Tagliano e incidono con estrema precisione legno, plexiglass, pelle e cartone.</p>
+        </div>
+        <div class="tool-card">
+          <span class="tool-index">03</span>
+          <h3>Frese CNC</h3>
+          <p>Macchine a controllo numerico per scolpire e modellare materiali duri.</p>
+        </div>
+        <div class="tool-card">
+          <span class="tool-index">04</span>
+          <h3>Elettronica</h3>
+          <p>Postazioni con schede e microcontrollori per rendere intelligenti gli oggetti creati.</p>
+        </div>
+      </div>
+
+      <div class="two-col reveal">
+        <div>
+          <h3>Una tradizione tutta italiana</h3>
+          <p>In Italia il concetto di Fab Lab ha trovato un terreno incredibilmente fertile: una storia secolare legata all'artigianato, al design e al &laquo;saper fare&raquo;. I Fab Lab italiani hanno saputo unire questa tradizione manifatturiera con l'innovazione digitale, dando vita alla figura dell'Artigiano Digitale, o Maker.</p>
+          <p>Non è un caso che l'Italia sia la patria di Arduino, la piattaforma hardware open-source che ha rivoluzionato la prototipazione elettronica, e che ospiti a Roma una delle Maker Faire più grandi al mondo.</p>
+        </div>
+        <div>
+          <h3>Perché conta davvero</h3>
+          <ul class="check-list">
+            <li><strong>PMI e startup</strong>: prototipano nuovi prodotti a costi accessibili prima della produzione in serie.</li>
+            <li><strong>Educazione</strong>: avvicina i giovani alle materie STEM con il learning by doing.</li>
+            <li><strong>Design Made in Italy</strong>: nuovi strumenti per sperimentare forme e materiali inesplorati.</li>
+          </ul>
+          <p>Non è necessario essere un ingegnere o un programmatore esperto: il nostro Fab Lab è pensato per chiunque abbia voglia di conoscere e passione nel fare, grazie a professionisti del settore e a una community viva e in costante crescita.</p>
+        </div>
+      </div>
+
+      <div class="cta-banner reveal">
+        <h3>Hai un'idea nel cassetto?</h3>
+        <p>Un progetto scolastico da realizzare o semplicemente vuoi imparare a usare una stampante 3D? Contattaci.</p>
+        <a href="#contatti" class="btn btn-primary">Come iniziare</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN SOURCE -->
+  <section class="section" id="opensource">
+    <div class="section-inner">
+      <p class="section-tag">03 &middot; Open Source</p>
+      <h2 class="section-title">Codice libero, costruito insieme</h2>
+
+      <div class="lead-block reveal">
+        <p>L'Open Source non è solo un modello di licenza software: è un modo di pensare e di vivere la tecnologia. Fare Zero crede nel promuovere, difendere e diffondere questa cultura. La tecnologia deve essere accessibile, trasparente e, soprattutto, costruita insieme.</p>
+        <p>A differenza di molte realtà, la nostra community non vive solo sui server: si incontra, discute e crea.</p>
+      </div>
+
+      <div class="card-grid four reveal">
+        <div class="feature-card">
+          <h3>Sviluppo collaborativo</h3>
+          <p>Lavoriamo in team su repository pubblici, dal primo commit alla gestione di progetti complessi.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Meetup e hackathon</h3>
+          <p>Incontri fisici e virtuali, install party e maratone di programmazione per risolvere problemi concreti.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Formazione e divulgazione</h3>
+          <p>Workshop, corsi e seminari su strumenti, librerie e piattaforme open source per scuole e professionisti.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Supporto reciproco</h3>
+          <p>Forum, chat e mailing list sempre attivi per domande tecniche, code review e novità tecnologiche.</p>
+        </div>
+      </div>
+
+      <div class="two-col reveal">
+        <div>
+          <h3>Perché entrare nella nostra associazione</h3>
+          <p>Far parte della nostra realtà significa smettere di essere un semplice utente e iniziare a essere un contributore.</p>
+        </div>
+        <div>
+          <ul class="check-list">
+            <li><strong>Migliora le tue competenze</strong>: lavora su progetti reali insieme a persone più esperte.</li>
+            <li><strong>Fai networking</strong>: incontra professionisti tech, studenti brillanti e aziende dell'ecosistema libero.</li>
+            <li><strong>Hai un impatto reale</strong>: codice, documentazione ed eventi che beneficiano migliaia di persone.</li>
+          </ul>
+        </div>
+      </div>
+
+      <blockquote class="pull-quote reveal">Non importa quale sia il tuo livello di esperienza o il tuo linguaggio di programmazione preferito. Se hai voglia di imparare e di condividere quello che sai, la nostra porta è aperta.</blockquote>
+    </div>
+  </section>
+
+  <!-- NERD SPACE -->
+  <section class="section section-alt" id="nerdspace">
+    <div class="section-inner">
+      <p class="section-tag">04 &middot; Nerd Space</p>
+      <h2 class="section-title">Il gioco come momento di ritrovo</h2>
+
+      <div class="lead-block reveal">
+        <p>Conosci quella sensazione unica che si prova aprendo la scatola di un gioco nuovo, o il brivido di lanciare un dardo sperando in un 20 naturale? O ancora l'adrenalina di una vittoria all'ultimo secondo, pad alla mano? Se la risposta è sì, preparati a sentirti a casa.</p>
+        <p>Che tu sia uno stratega calcolatore, un bardo in cerca di gloria o un cecchino da divano: qui c'è un posto a sedere che ti aspetta.</p>
+      </div>
+
+      <div class="pillar-grid reveal">
+        <div class="pillar-card">
+          <span class="pillar-mark">I</span>
+          <h3>Giochi da tavolo</h3>
+          <p>Dal fascino senza tempo dei grandi classici ai titoli più moderni e complessi. Party game per rompere il ghiaccio, Eurogame per far fumare il cervello a suon di gestione risorse, American pieni di miniature e colpi di scena. Non sai le regole? Nessun problema, c'è sempre qualcuno pronto a spiegarle.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-mark">II</span>
+          <h3>Giochi di ruolo</h3>
+          <p>Prendi una matita, dei dadi poliedrici e la tua immaginazione. I nostri Master ti guidano in mondi incredibili, dungeon oscuri e galassie lontane: Dungeons &amp; Dragons, Cyberpunk, il Richiamo di Cthulhu, Vampiri e tantissimi sistemi indie.</p>
+        </div>
+        <div class="pillar-card">
+          <span class="pillar-mark">III</span>
+          <h3>Videogames</h3>
+          <p>Per chi ha i riflessi pronti e ama la luce dei monitor. Postazioni per giocare insieme, sfidarci e condividere la passione per i bit: tornei di picchiaduro, sessioni cooperative e grandi serate di retrogaming.</p>
+        </div>
+      </div>
+
+      <div class="two-col reveal">
+        <div>
+          <h3>Molto più di una semplice partita</h3>
+          <p>Perché unirti a noi e non giocare semplicemente da casa? Perché il gioco è prima di tutto condivisione. Venire nella nostra associazione significa staccare la spina dalla routine quotidiana, conoscere persone nuove, confrontarsi e stringere amicizie che spesso vanno ben oltre il tavolo da gioco.</p>
+          <p>È il luogo perfetto per testare quel gioco che hai comprato ma per cui non trovi mai il gruppo giusto, o per scoprire passioni che non sapevi di avere.</p>
+        </div>
+        <div>
+          <p>Non importa il tuo livello di esperienza: i veterani sono sempre felici di iniziare i novizi, e chi è alle prime armi porta sempre una ventata di freschezza.</p>
+          <p class="rule-note">L'unica regola ferrea che abbiamo è il rispetto reciproco, e forse non rovesciare le bibite sui tabelloni.</p>
+          <a href="#contatti" class="btn btn-ghost">Entra in partita</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ON TOUR -->
+  <section class="section" id="ontour">
+    <div class="section-inner">
+      <p class="section-tag">05 &middot; In giro per il bel Paese</p>
+      <h2 class="section-title">Fare Zero Makers on tour</h2>
+
+      <div class="lead-block reveal">
+        <p>La nostra missione è semplice: connettere le persone attraverso il potere del gioco. Portiamo ovunque una vera e propria Play Room mobile, carica di giochi da tavolo, giochi di ruolo, dadi, carte e tanta voglia di stare insieme. Che tu sia un master esperto o un curioso alle prime armi, abbiamo il tavolo giusto per te.</p>
+        <p>Viaggiamo lungo tutta la penisola per trasformare piazze, festival, scuole, circoli e parchi in spazi di socializzazione pura.</p>
+      </div>
+
+      <div class="card-grid four reveal">
+        <div class="feature-card">
+          <h3>Play Room per tutti</h3>
+          <p>Centinaia di scatole pronte da intavolare: party game veloci, giochi strategici, grandi classici e ultime novità editoriali.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Sessioni di GDR</h3>
+          <p>Campagne brevi, one-shot e introduzioni ai sistemi più famosi (D&amp;D, Pathfinder, Call of Cthulhu) e alle chicche indie.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Master esperti</h3>
+          <p>Odi leggere i regolamenti? Ci pensiamo noi: ti siedi, ti rilassi e il nostro team ti spiega le regole in pochi minuti.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Eventi su misura</h3>
+          <p>Collaboriamo con comuni, festival nerd, fiere e realtà locali per creare eventi ludici unici e aggregativi.</p>
+        </div>
+      </div>
+
+      <blockquote class="pull-quote reveal">Il gioco è una cosa seria, ma ci si diverte un sacco. Intorno a un tavolo siamo tutti uguali, uniti dalla voglia di esplorare, sfidarci e ridere.</blockquote>
+
+      <div class="steps-grid reveal">
+        <div class="step-card">
+          <span class="step-num">1</span>
+          <h3>Vieni a giocare</h3>
+          <p>Controlla la mappa, trova la tappa più vicina a te e raggiungici. L'accesso alla nostra Play Room è gratuito.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">2</span>
+          <h3>Invitaci nel tuo comune</h3>
+          <p>Sei un organizzatore di festival o gestisci uno spazio culturale? Porta la nostra ludoteca itinerante nel tuo territorio: logistica, tavoli, giochi e animazione, ce ne occupiamo noi.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">3</span>
+          <h3>Diventa un Master Makers</h3>
+          <p>Vuoi salire di livello diventando un Master? Unendoti alla community potrai imparare, confrontarti con altri master e fare esperienza con tanti player pronti a partire per nuove avventure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section class="section section-alt contact-section" id="contatti">
+    <div class="section-inner">
+      <p class="section-tag">06 &middot; Contatti</p>
+      <h2 class="section-title">Sali a bordo</h2>
+      <div class="lead-block reveal">
+        <p>Le porte della nostra sede sono sempre aperte. Vuoi partecipare a un evento, portare la Play Room nel tuo comune o metterti al lavoro nel Fab Lab? Scrivici, torniamo da te al più presto.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <a class="contact-card" href="mailto:info@farezero.org">
+          <h3>Email</h3>
+          <p>info@farezero.org</p>
+        </a>
+        <div class="contact-card">
+          <h3>Sede</h3>
+          <p>Alto Salento, Puglia</p>
+        </div>
+        <div class="contact-card">
+          <h3>Community</h3>
+          <p>Forum, chat e mailing list sempre attivi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/icon.png" alt="" class="footer-icon">
+      <span>Fare<strong>Zero</strong> Makers &middot; Fab Lab</span>
+    </div>
+    <p class="footer-tag">Associazione culturale: Innovazione, Open Source, Giochi &amp; Fabbricazione digitale nell'Alto Salento.</p>
+    <p class="footer-copy">&copy; <span id="year"></span> Fare Zero. Costruito con passione, dadi e qualche riga di codice.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Torna in alto">&uarr;</button>
+
+<script src="js/script.js"></script>
+</body>
+</html>

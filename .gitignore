@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (in caso si aggiungano tool in futuro)
+node_modules/
+
+# Env / secrets
+.env
+.env.*
+
+# Archivi e file temporanei di test
+*.zip
+*.tmp
+debug.html
+test-*.html
