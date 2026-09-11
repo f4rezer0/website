@@ -16,8 +16,10 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
           local-dir: ./
           server-dir: /
+          timeout: 60000
           exclude: |
             **/.git*
             **/.git*/**
