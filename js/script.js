@@ -99,6 +99,52 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
+  /* ---------- fab toggle ---------- */
+  var fabToggle = document.getElementById("fabToggle");
+  var fabWrap = document.getElementById("fabWrap");
+  if (fabToggle && fabWrap) {
+    fabToggle.addEventListener("click", function () {
+      fabWrap.classList.toggle("open");
+    });
+    document.addEventListener("click", function (e) {
+      if (!fabWrap.contains(e.target)) {
+        fabWrap.classList.remove("open");
+      }
+    });
+  }
+
+  /* ---------- leaflet map ---------- */
+  var mapEl = document.getElementById("siteMap");
+  if (mapEl && typeof L !== "undefined") {
+    var lat = 40.533218, lng = 17.583304;
+    var map = L.map(mapEl, {
+      scrollWheelZoom: false,
+      attributionControl: true
+    }).setView([lat, lng], 17);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var markerSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="50" viewBox="0 0 36 50">'
+      + '<defs><clipPath id="pc"><circle cx="18" cy="16" r="12"/></clipPath></defs>'
+      + '<path d="M18 0C8.06 0 0 8.06 0 18c0 12.6 18 32 18 32s18-19.4 18-32C36 8.06 27.94 0 18 0z" fill="#588e42" stroke="#fff" stroke-width="2"/>'
+      + '<circle cx="18" cy="16" r="13" fill="#fff"/>'
+      + '<image href="assets/icon.png" x="5" y="3" width="26" height="26" clip-path="url(#pc)"/>'
+      + '</svg>';
+    var fzIcon = L.divIcon({
+      className: "fz-marker",
+      html: markerSvg,
+      iconSize: [36, 50],
+      iconAnchor: [18, 50],
+      popupAnchor: [0, -50]
+    });
+
+    L.marker([lat, lng], { icon: fzIcon })
+      .addTo(map)
+      .bindPopup("<strong>Fare Zero Makers</strong><br>Biblioteca Comunale &laquo;G. Calò&raquo;<br>Via Barbaro Forleo, 1");
+  }
+
   /* ---------- hero particle canvas ---------- */
   var canvas = document.getElementById("heroCanvas");
   if (canvas && canvas.getContext) {

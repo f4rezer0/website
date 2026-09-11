@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fare Zero | Associazione culturale, Fab Lab &amp; community nerd</title>
-<meta name="description" content="Fare Zero: associazione culturale, Fab Lab, community open source e nerd dell'Alto Salento. Giochi di ruolo, da tavolo, videogames, hackathon e fabbricazione digitale.">
+<title>Fare Zero | APS, Fab Lab &amp; community nerd</title>
+<meta name="description" content="Fare Zero: associazione di promozione sociale, Fab Lab, LUG e community open source dell'Alto Salento. Innovazione sostenibile, giochi di ruolo, da tavolo, hackathon e fabbricazione digitale.">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
@@ -13,6 +13,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
 <link rel="shortcut icon" href="assets/favicon.ico">
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -33,7 +34,7 @@
         <li><a href="#fablab" class="nav-link">Fab Lab</a></li>
         <li><a href="#opensource" class="nav-link">Open Source</a></li>
         <li><a href="#nerdspace" class="nav-link">Nerd Space</a></li>
-        <li><a href="#ontour" class="nav-link">In giro per il Paese</a></li>
+        <li><a href="#ontour" class="nav-link">In giro per la Puglia</a></li>
         <li><a href="#contatti" class="nav-link nav-cta">Contatti</a></li>
       </ul>
     </nav>
@@ -52,7 +53,7 @@
     <div class="hero-vignette" aria-hidden="true"></div>
     <div class="hero-content">
       <img src="assets/logo.png" alt="Fare Zero Makers - Fab Lab" class="hero-logo">
-      <p class="hero-kicker">Associazione culturale &middot; dal 2013 &middot; Alto Salento</p>
+      <p class="hero-kicker">Associazione di promozione sociale &middot; dal 2013 &middot; Alto Salento</p>
       <h1 class="hero-title">Un ecosistema per nerd, maker e smanettoni</h1>
       <p class="hero-lead">Dadi a venti facce, galassie lontane, righe di codice eleganti e macchinari futuristici: se ti pulsa il cuore per una di queste cose, sei già dei nostri.</p>
       <div class="hero-actions">
@@ -71,24 +72,24 @@
 
       <div class="lead-block reveal">
         <p>Se siete approdati su questa pagina, probabilmente condividiamo la stessa passione per dadi a venti facce, galassie lontane, righe di codice eleganti, macchinari futuristici e tutto ciò che rende meravigliosa la cultura nerd.</p>
-        <p>Non siamo solo un'associazione culturale: siamo una <em>taverna</em> sicura per avventurieri di ogni livello, un laboratorio di innovazione per menti creative, e un porto franco per chiunque ami sognare a occhi aperti o progettare il futuro tecnologico.</p>
+        <p>Non siamo solo un'associazione: siamo una <em>taverna</em> sicura per avventurieri di ogni livello, un laboratorio di innovazione per menti creative, e un porto franco per chiunque ami sognare a occhi aperti o progettare il futuro tecnologico. La nostra casa è la <strong>Biblioteca Comunale &laquo;G. Calò&raquo;</strong> di Francavilla Fontana, dove abbiamo il nostro Fab Lab, organizziamo eventi e apriamo le porte a chiunque voglia imparare e condividere.</p>
       </div>
 
       <div class="two-col reveal">
         <div>
           <h3>La nostra storia</h3>
-          <p>Tutto è iniziato nel 2013 con un gruppo di amici, all'indomani di un convegno sulla presentazione del libro-manifesto <em>&laquo;Territorio Zero&raquo;</em> che il co-autore Angelo Consoli, direttore del CETRI-TIRES e collaboratore di Jeremy Rifkin, tenne a Francavilla Fontana (BR) nel marzo del 2013. In quell'occasione i futuri fondatori di FareZero.org, tutti appassionati di tecnologia open source, furono semplicemente folgorati dalle potenzialità che un progetto simile poteva dare.</p>
-          <p>Da quel &laquo;Tiro Salvezza&raquo; superato con successo, e dalla prima riga di codice compilata senza errori, siamo cresciuti. Abbiamo unito le forze per trasformare le nostre passioni individuali in un progetto collettivo, creando un vero e proprio ecosistema per i nerd, i maker e gli smanettoni di tutto l'Alto Salento.</p>
+          <p>Tutto è iniziato nel 2013 con un gruppo di amici, all'indomani di un convegno sulla presentazione del libro-manifesto <em>&laquo;Territorio Zero&raquo;</em> che il co-autore Angelo Consoli, direttore del CETRI-TIRES e collaboratore di Jeremy Rifkin, tenne a Francavilla Fontana (BR) nel marzo del 2013. In quell'occasione i futuri fondatori di FareZero.org, tutti appassionati di tecnologia open source, furono folgorati dalle potenzialità che un progetto simile poteva dare: usare la tecnologia libera per rendere il cittadino più indipendente e in armonia con l'ambiente. Il nome &laquo;Fare Zero&raquo; nasce proprio da lì, dall'idea di emissioni zero, rifiuti zero, chilometri zero.</p>
+          <p>Da quel &laquo;Tiro Salvezza&raquo; superato con successo, e dalla prima riga di codice compilata senza errori, siamo cresciuti. Siamo il primo e unico <strong>Linux User Group (LUG) ufficiale</strong> della provincia di Brindisi, organizziamo il <strong>Linux Day</strong> dal 2015 e il <strong>PucciaTech</strong>, abbiamo portato gli <strong>Open Data</strong> nel Comune di Francavilla Fontana e costruito una stampante 3D alimentata a energia solare che ha ricevuto elogi da tutto il mondo. Abbiamo unito le forze per trasformare le nostre passioni individuali in un progetto collettivo, creando un vero e proprio ecosistema per i nerd, i maker e gli smanettoni di tutto l'Alto Salento.</p>
         </div>
         <div>
           <h3>Un cantiere sempre aperto</h3>
-          <p>La nostra sede è un cantiere sempre aperto di idee, dadi che rotolano e repository in continuo aggiornamento. Ecco cosa troverete varcando la nostra soglia:</p>
+          <p>La nostra sede in Biblioteca è un cantiere sempre aperto di idee, dadi che rotolano e repository in continuo aggiornamento. Ecco cosa troverete varcando la nostra soglia:</p>
           <ul class="check-list">
-            <li><strong>Innovazione e Open Source</strong>: software libero, Linux Install Party, hackathon, privacy digitale ed etica informatica.</li>
-            <li><strong>Giochi di ruolo e da tavolo</strong>: dalle campagne epiche di D&amp;D ai giochi più strategici.</li>
+            <li><strong>Innovazione e Open Source</strong>: software libero, Linux Day, PucciaTech, Install Party, hackathon, privacy digitale ed etica informatica.</li>
+            <li><strong>Fab Lab</strong>: stampanti 3D, taglio laser, elettronica, postproduzione e prototipazione.</li>
+            <li><strong>Giochi di ruolo e da tavolo</strong>: Bibliogame Night, campagne di D&amp;D, Gameathlon e serate ludiche.</li>
             <li><strong>Videogames e sviluppo</strong>: dal retrogaming all'indie dev, fino allo sviluppo videoludico.</li>
-            <li><strong>Cultura pop e fumetto</strong>: gruppi di lettura e cineforum a tema sci-fi e fantasy.</li>
-            <li><strong>Eventi e workshop</strong>: incontri con autori, miniature, cosplay making, bootcamp di programmazione.</li>
+            <li><strong>Eventi e workshop</strong>: formazione nelle scuole, incontri con autori, bootcamp di programmazione.</li>
           </ul>
         </div>
       </div>
@@ -116,37 +117,37 @@
         <div class="tool-card">
           <span class="tool-index">01</span>
           <h3>Stampanti 3D</h3>
-          <p>Creano oggetti tridimensionali depositando materiale strato dopo strato.</p>
+          <p>Cinque stampanti FDM e a resina per creare oggetti tridimensionali strato dopo strato.</p>
         </div>
         <div class="tool-card">
           <span class="tool-index">02</span>
           <h3>Taglio laser</h3>
-          <p>Tagliano e incidono con estrema precisione legno, plexiglass, pelle e cartone.</p>
+          <p>Taglia e incide con estrema precisione legno, plexiglass, pelle e cartone.</p>
         </div>
         <div class="tool-card">
           <span class="tool-index">03</span>
-          <h3>Frese CNC</h3>
-          <p>Macchine a controllo numerico per scolpire e modellare materiali duri.</p>
+          <h3>Elettronica</h3>
+          <p>Postazione con Arduino, Raspberry Pi e microcontrollori per rendere intelligenti gli oggetti creati.</p>
         </div>
         <div class="tool-card">
           <span class="tool-index">04</span>
-          <h3>Elettronica</h3>
-          <p>Postazioni con schede e microcontrollori per rendere intelligenti gli oggetti creati.</p>
+          <h3>Postproduzione</h3>
+          <p>Fresa e strumenti di finitura per rifinire, assemblare e completare ogni progetto.</p>
         </div>
       </div>
 
       <div class="two-col reveal">
         <div>
-          <h3>Una tradizione tutta italiana</h3>
-          <p>In Italia il concetto di Fab Lab ha trovato un terreno incredibilmente fertile: una storia secolare legata all'artigianato, al design e al &laquo;saper fare&raquo;. I Fab Lab italiani hanno saputo unire questa tradizione manifatturiera con l'innovazione digitale, dando vita alla figura dell'Artigiano Digitale, o Maker.</p>
-          <p>Non è un caso che l'Italia sia la patria di Arduino, la piattaforma hardware open-source che ha rivoluzionato la prototipazione elettronica, e che ospiti a Roma una delle Maker Faire più grandi al mondo.</p>
+          <h3>Il nostro percorso</h3>
+          <p>Il Fab Lab di Fare Zero nasce nella <strong>Biblioteca Comunale &laquo;G. Calò&raquo;</strong> di Francavilla Fontana. Già nel 2013 abbiamo costruito la nostra prima stampante 3D partendo da un progetto open source, e l'anno successivo abbiamo realizzato la <strong>3D SolarPrint</strong>: la prima stampante 3D off-grid al mondo alimentata interamente a energia solare, un risultato che ci ha portato elogi da tutto il mondo, persino da Jeremy Rifkin.</p>
+          <p>Non è un caso che l'Italia sia la patria di Arduino, la piattaforma hardware open-source che ha rivoluzionato la prototipazione elettronica. Il nostro laboratorio segue la stessa filosofia: unire la tradizione manifatturiera del &laquo;saper fare&raquo; con l'innovazione digitale.</p>
         </div>
         <div>
           <h3>Perché conta davvero</h3>
           <ul class="check-list">
             <li><strong>PMI e startup</strong>: prototipano nuovi prodotti a costi accessibili prima della produzione in serie.</li>
             <li><strong>Educazione</strong>: avvicina i giovani alle materie STEM con il learning by doing.</li>
-            <li><strong>Design Made in Italy</strong>: nuovi strumenti per sperimentare forme e materiali inesplorati.</li>
+            <li><strong>Sostenibilità</strong>: dalla 3D SolarPrint in poi, sperimentiamo soluzioni a basso impatto ambientale.</li>
           </ul>
           <p>Non è necessario essere un ingegnere o un programmatore esperto: il nostro Fab Lab è pensato per chiunque abbia voglia di conoscere e passione nel fare, grazie a professionisti del settore e a una community viva e in costante crescita.</p>
         </div>
@@ -173,33 +174,33 @@
 
       <div class="card-grid four reveal">
         <div class="feature-card">
-          <h3>Sviluppo collaborativo</h3>
-          <p>Lavoriamo in team su repository pubblici, dal primo commit alla gestione di progetti complessi.</p>
+          <h3>Linux Day &amp; PucciaTech</h3>
+          <p>Organizziamo il Linux Day dal 2015 e il PucciaTech, il format che unisce open source e convivialità salentina.</p>
         </div>
         <div class="feature-card">
-          <h3>Meetup e hackathon</h3>
-          <p>Incontri fisici e virtuali, install party e maratone di programmazione per risolvere problemi concreti.</p>
+          <h3>Open Data</h3>
+          <p>Abbiamo portato gli Open Data nel Comune di Francavilla Fontana: AlboPOP, formazione studenti e dataset pubblici.</p>
         </div>
         <div class="feature-card">
-          <h3>Formazione e divulgazione</h3>
-          <p>Workshop, corsi e seminari su strumenti, librerie e piattaforme open source per scuole e professionisti.</p>
+          <h3>Formazione nelle scuole</h3>
+          <p>Collaboriamo con l'ITIS Fermi e le scuole del territorio: I-Week, Computer Science Unplugged, alternanza e workshop.</p>
         </div>
         <div class="feature-card">
-          <h3>Supporto reciproco</h3>
-          <p>Forum, chat e mailing list sempre attivi per domande tecniche, code review e novità tecnologiche.</p>
+          <h3>LUG ufficiale</h3>
+          <p>Primo e unico Linux User Group ufficiale della provincia di Brindisi. Install party, hackathon e supporto reciproco.</p>
         </div>
       </div>
 
       <div class="two-col reveal">
         <div>
           <h3>Perché entrare nella nostra associazione</h3>
-          <p>Far parte della nostra realtà significa smettere di essere un semplice utente e iniziare a essere un contributore.</p>
+          <p>Far parte della nostra realtà significa smettere di essere un semplice utente e iniziare a essere un contributore. Nel 2015 abbiamo organizzato il <strong>Makerinff</strong>, portando nella scuola Montessori di Francavilla speaker di rilievo internazionale nel campo della libertà informatica.</p>
         </div>
         <div>
           <ul class="check-list">
             <li><strong>Migliora le tue competenze</strong>: lavora su progetti reali insieme a persone più esperte.</li>
             <li><strong>Fai networking</strong>: incontra professionisti tech, studenti brillanti e aziende dell'ecosistema libero.</li>
-            <li><strong>Hai un impatto reale</strong>: codice, documentazione ed eventi che beneficiano migliaia di persone.</li>
+            <li><strong>Hai un impatto reale</strong>: codice, documentazione ed eventi che coinvolgono il territorio e le istituzioni.</li>
           </ul>
         </div>
       </div>
@@ -223,7 +224,7 @@
         <div class="pillar-card">
           <span class="pillar-mark">I</span>
           <h3>Giochi da tavolo</h3>
-          <p>Dal fascino senza tempo dei grandi classici ai titoli più moderni e complessi. Party game per rompere il ghiaccio, Eurogame per far fumare il cervello a suon di gestione risorse, American pieni di miniature e colpi di scena. Non sai le regole? Nessun problema, c'è sempre qualcuno pronto a spiegarle.</p>
+          <p>Dal fascino senza tempo dei grandi classici ai titoli più moderni e complessi. Party game per rompere il ghiaccio, Eurogame per far fumare il cervello a suon di gestione risorse, American pieni di miniature e colpi di scena. Non sai le regole? Nessun problema: alla nostra <strong>Bibliogame Night</strong> mensile c'è sempre qualcuno pronto a spiegarle.</p>
         </div>
         <div class="pillar-card">
           <span class="pillar-mark">II</span>
@@ -233,7 +234,7 @@
         <div class="pillar-card">
           <span class="pillar-mark">III</span>
           <h3>Videogames</h3>
-          <p>Per chi ha i riflessi pronti e ama la luce dei monitor. Postazioni per giocare insieme, sfidarci e condividere la passione per i bit: tornei di picchiaduro, sessioni cooperative e grandi serate di retrogaming.</p>
+          <p>Per chi ha i riflessi pronti e ama la luce dei monitor. Il <strong>Gameathlon</strong> e le nostre serate di gaming sono il posto giusto per sfidarsi: tornei di picchiaduro, sessioni cooperative e grandi serate di retrogaming.</p>
         </div>
       </div>
 
@@ -255,12 +256,12 @@
   <!-- ON TOUR -->
   <section class="section" id="ontour">
     <div class="section-inner">
-      <p class="section-tag">05 &middot; In giro per il bel Paese</p>
+      <p class="section-tag">05 &middot; In giro per la Puglia</p>
       <h2 class="section-title">Fare Zero Makers on tour</h2>
 
       <div class="lead-block reveal">
         <p>La nostra missione è semplice: connettere le persone attraverso il potere del gioco. Portiamo ovunque una vera e propria Play Room mobile, carica di giochi da tavolo, giochi di ruolo, dadi, carte e tanta voglia di stare insieme. Che tu sia un master esperto o un curioso alle prime armi, abbiamo il tavolo giusto per te.</p>
-        <p>Viaggiamo lungo tutta la penisola per trasformare piazze, festival, scuole, circoli e parchi in spazi di socializzazione pura.</p>
+        <p>Ci muoviamo per la Puglia e i territori limitrofi per trasformare piazze, festival, scuole, biblioteche e parchi in spazi di socializzazione pura.</p>
       </div>
 
       <div class="card-grid four reveal">
@@ -317,14 +318,17 @@
           <h3>Email</h3>
           <p>info@farezero.org</p>
         </a>
+        <a class="contact-card" href="https://wa.me/393273633631" target="_blank" rel="noopener">
+          <h3>WhatsApp</h3>
+          <p>+39 327 363 3631</p>
+        </a>
         <div class="contact-card">
           <h3>Sede</h3>
-          <p>Alto Salento, Puglia</p>
+          <p>Biblioteca Comunale &laquo;G. Calò&raquo;<br>Via Barbaro Forleo, 1<br>Francavilla Fontana (BR)</p>
         </div>
-        <div class="contact-card">
-          <h3>Community</h3>
-          <p>Forum, chat e mailing list sempre attivi</p>
-        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <div id="siteMap"></div>
       </div>
     </div>
   </section>
@@ -337,13 +341,47 @@
       <img src="assets/icon.png" alt="" class="footer-icon">
       <span>Fare<strong>Zero</strong> Makers &middot; Fab Lab</span>
     </div>
-    <p class="footer-tag">Associazione culturale: Innovazione, Open Source, Giochi &amp; Fabbricazione digitale nell'Alto Salento.</p>
+    <p class="footer-tag">Associazione di promozione sociale: Innovazione, Open Source, Giochi &amp; Fabbricazione digitale nell'Alto Salento.</p>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/farezeromakers/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/FareZeroMakers" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
     <p class="footer-copy">&copy; <span id="year"></span> Fare Zero. Costruito con passione, dadi e qualche riga di codice.</p>
   </div>
 </footer>
 
 <button class="to-top" id="toTop" aria-label="Torna in alto">&uarr;</button>
 
+<!-- FAB contatti -->
+<div class="fab-wrap" id="fabWrap">
+  <div class="fab-menu" id="fabMenu">
+    <a href="https://www.facebook.com/FareZeroMakers" target="_blank" rel="noopener" class="fab-item fab-fb" aria-label="Facebook">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/farezeromakers/" target="_blank" rel="noopener" class="fab-item fab-ig" aria-label="Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="mailto:info@farezero.org" class="fab-item fab-email" aria-label="Email">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </a>
+    <a href="tel:+393273633631" class="fab-item fab-phone" aria-label="Telefono">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+  </div>
+  <button class="fab-info" id="fabToggle" aria-label="Contatti rapidi">
+    <svg class="fab-icon-open" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+    <svg class="fab-icon-close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <a href="https://wa.me/393273633631" target="_blank" rel="noopener" class="fab-wa" aria-label="WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
