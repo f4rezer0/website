@@ -16,28 +16,49 @@ jobs:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
-          CURL_BASE="curl --ssl-reqd --insecure -u ${FTP_USER}:${FTP_PASS} --ftp-create-dirs -s -S"
-          FTP_URL="ftp://${FTP_HOST}"
+          python3 -c '
+          import ftplib, os, ssl
 
-          # Create remote directories
-          find . -type d \
-            ! -path './.git' ! -path './.git/*' \
-            ! -path './.github' ! -path './.github/*' \
-            ! -path './node_modules' ! -path './node_modules/*' \
-            -printf '%P\n' | while IFS= read -r dir; do
-            [ -z "$dir" ] && continue
-            echo "MKD  $dir"
-            $CURL_BASE -Q "MKD $dir" "${FTP_URL}/" -o /dev/null 2>/dev/null || true
-          done
+          host = os.environ["FTP_HOST"]
+          user = os.environ["FTP_USER"]
+          pw   = os.environ["FTP_PASS"]
 
-          # Upload all files
-          find . -type f \
-            ! -path './.git/*' \
-            ! -path './.github/*' \
-            ! -path './node_modules/*' \
-            -printf '%P\n' | while IFS= read -r file; do
-            echo "PUT  $file"
-            $CURL_BASE -T "$file" "${FTP_URL}/${file}"
-          done
+          EXCLUDE = {".git", ".github", "node_modules"}
 
-          echo "Deploy complete."
+          ctx = ssl.create_default_context()
+          ctx.check_hostname = False
+          ctx.verify_mode = ssl.CERT_NONE
+
+          ftp = ftplib.FTP_TLS(host, user, pw, context=ctx)
+          ftp.prot_p()
+          print(f"Connected to {host}")
+
+          remote_dirs = set()
+          try:
+              for entry in ftp.mlsd():
+                  if entry[1].get("type") == "dir":
+                      remote_dirs.add(entry[0])
+          except Exception:
+              pass
+
+          for root, dirs, files in os.walk("."):
+              dirs[:] = [d for d in dirs if d not in EXCLUDE]
+              rel = os.path.relpath(root, ".")
+              if rel != ".":
+                  if rel not in remote_dirs:
+                      try:
+                          ftp.mkd(rel)
+                          print(f"MKD  {rel}")
+                      except ftplib.error_perm:
+                          pass
+              for f in files:
+                  local_path = os.path.join(root, f)
+                  remote_path = os.path.join(rel, f) if rel != "." else f
+                  remote_path = remote_path.replace(os.sep, "/")
+                  with open(local_path, "rb") as fh:
+                      ftp.storbinary(f"STOR {remote_path}", fh)
+                  print(f"PUT  {remote_path}")
+
+          ftp.quit()
+          print("Deploy complete.")
+          '
