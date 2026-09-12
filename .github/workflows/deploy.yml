@@ -19,7 +19,7 @@ jobs:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
-          lftp -e "
+          lftp -u "$FTP_USER","$FTP_PASS" -e "
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
             set ssl:verify-certificate no;
@@ -31,4 +31,4 @@ jobs:
               --exclude ^node_modules/ \
               ./ /;
             quit
-          " -u "$FTP_USER","$FTP_PASS" "$FTP_HOST"
+          " "$FTP_HOST"
