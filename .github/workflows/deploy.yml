@@ -10,26 +10,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install lftp
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
-
       - name: Deploy via FTPS
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
-          lftp -c "
-            set ftp:ssl-force true;
-            set ftp:ssl-protect-data true;
-            set ssl:verify-certificate no;
-            set net:timeout 30;
-            set net:max-retries 3;
-            open -u ${FTP_USER},${FTP_PASS} ${FTP_HOST};
-            mirror --reverse --delete --verbose \
-              --exclude ^\.git/ \
-              --exclude ^\.github/ \
-              --exclude ^node_modules/ \
-              ./ /;
-            quit
-          "
+          CURL_BASE="curl --ssl-reqd --insecure -u ${FTP_USER}:${FTP_PASS} --ftp-create-dirs -s -S"
+          FTP_URL="ftp://${FTP_HOST}"
+
+          # Create remote directories
+          find . -type d \
+            ! -path './.git' ! -path './.git/*' \
+            ! -path './.github' ! -path './.github/*' \
+            ! -path './node_modules' ! -path './node_modules/*' \
+            -printf '%P\n' | while IFS= read -r dir; do
+            [ -z "$dir" ] && continue
+            echo "MKD  $dir"
+            $CURL_BASE -Q "MKD $dir" "${FTP_URL}/" -o /dev/null 2>/dev/null || true
+          done
+
+          # Upload all files
+          find . -type f \
+            ! -path './.git/*' \
+            ! -path './.github/*' \
+            ! -path './node_modules/*' \
+            -printf '%P\n' | while IFS= read -r file; do
+            echo "PUT  $file"
+            $CURL_BASE -T "$file" "${FTP_URL}/${file}"
+          done
+
+          echo "Deploy complete."
