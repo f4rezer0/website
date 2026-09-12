@@ -23,7 +23,7 @@
 }
 
 *{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
+html{ scroll-behavior: smooth; overflow-x: hidden; }
 
 body{
   margin:0;
@@ -587,9 +587,16 @@ ul{ margin:0; padding:0; }
 }
 
 @media (max-width: 640px){
-  .section{ padding: 84px 20px; }
+  .section{ padding: 84px 16px; }
   .card-grid{ grid-template-columns: 1fr; }
-  .pull-quote{ padding: 28px 24px; font-size: 1.1rem; }
-  .cta-banner{ padding: 30px 22px; }
-  .fab-wrap{ right: 16px; bottom: 74px; }
+  .pull-quote{ padding: 24px 18px; font-size: 1.05rem; }
+  .cta-banner{ padding: 28px 18px; }
+  .hero{ padding-left: 16px; padding-right: 16px; }
+  .header-inner{ padding: 0 16px; }
+  .site-footer{ padding: 48px 16px 32px; }
+  .fab-wrap{ right: 16px; bottom: 24px; }
+  .fab-wa{ width: 56px; height: 56px; }
+  .fab-wa svg{ width: 28px; height: 28px; }
+  .fab-info{ width: 56px; height: 56px; }
+  .fab-item{ width: 48px; height: 48px; }
 }
