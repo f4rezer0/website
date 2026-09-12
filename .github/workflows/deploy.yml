@@ -19,16 +19,17 @@ jobs:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
-          lftp -u "$FTP_USER","$FTP_PASS" -e "
+          lftp -c "
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
             set ssl:verify-certificate no;
             set net:timeout 30;
             set net:max-retries 3;
+            open -u ${FTP_USER},${FTP_PASS} ${FTP_HOST};
             mirror --reverse --delete --verbose \
               --exclude ^\.git/ \
               --exclude ^\.github/ \
               --exclude ^node_modules/ \
               ./ /;
             quit
-          " "$FTP_HOST"
+          "
