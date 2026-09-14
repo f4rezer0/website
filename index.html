@@ -414,8 +414,20 @@
       </a>
     </div>
     <p class="footer-copy">&copy; <span id="year"></span> Fare Zero. Costruito con passione, dadi e qualche riga di codice.</p>
+    <p class="footer-legal">
+      <a href="privacy/">Privacy e Cookie Policy</a>
+    </p>
+    <p class="footer-ai">Parte dei contenuti di questo sito è stata realizzata con l'ausilio di intelligenza artificiale, sotto la supervisione dei membri dell'associazione.</p>
   </div>
 </footer>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Questo sito utilizza cookie tecnici per il corretto funzionamento. Nessun cookie di profilazione. <a href="privacy/">Maggiori informazioni</a></p>
+    <button class="cookie-btn" id="cookieAccept">Ho capito</button>
+  </div>
+</div>
 
 <button class="to-top" id="toTop" aria-label="Torna in alto">&uarr;</button>
 
@@ -484,6 +496,18 @@
       btn.classList.add('active');
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
     });
+  });
+  // Cookie banner
+  var banner = document.getElementById('cookieBanner');
+  var acceptBtn = document.getElementById('cookieAccept');
+  try {
+    if (!localStorage.getItem('fz_cookie_consent')) {
+      banner.classList.add('visible');
+    }
+  } catch(e) {}
+  acceptBtn.addEventListener('click', function () {
+    banner.classList.remove('visible');
+    try { localStorage.setItem('fz_cookie_consent', '1'); } catch(e) {}
   });
 })();
 </script>
