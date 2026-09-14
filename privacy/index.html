@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy e Cookie Policy — Fare Zero</title>
+  <meta name="description" content="Informativa sulla privacy e cookie policy del sito farezero.org, ai sensi del Regolamento UE 2016/679 (GDPR).">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-180.png">
+  <link rel="shortcut icon" href="../assets/favicon.ico">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #1c1a19;
+      --bg-alt: #242120;
+      --surface: #2c2826;
+      --border: rgba(255,255,255,.08);
+      --border-strong: rgba(255,255,255,.16);
+      --text: #f3efe7;
+      --text-dim: #b8b1a8;
+      --text-faint: #8a837b;
+      --green: #7cbf5f;
+      --green-deep: #588e42;
+      --yellow: #ecd94f;
+      --yellow-deep: #c9ab1c;
+      --radius: 14px;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 17px;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--green); text-decoration: none; transition: color .25s; }
+    a:hover { color: var(--yellow); text-decoration: underline; }
+
+    ::selection { background: var(--green); color: #14130f; }
+
+    /* --- top bar --- */
+    .top-bar {
+      position: sticky; top: 0; z-index: 100;
+      padding: 14px 24px;
+      background: rgba(28,26,25,.75);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid var(--border);
+    }
+    .top-bar-inner {
+      max-width: 820px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .top-bar a {
+      display: flex; align-items: center; gap: 8px;
+      font-size: .88rem; color: var(--text-dim);
+    }
+    .top-bar a:hover { color: var(--green); text-decoration: none; }
+    .top-bar .brand-icon { width: 26px; height: auto; }
+    .top-bar .brand-text { font-weight: 600; color: var(--text); }
+    .top-bar .brand-text strong { color: var(--yellow); font-weight: 800; }
+
+    /* --- content --- */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3rem 24px 2rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: .5rem;
+      background: linear-gradient(135deg, var(--text) 40%, var(--green) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .last-update {
+      font-size: .85rem;
+      color: var(--text-faint);
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 2.5rem 0 .75rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.5rem 0 .5rem;
+    }
+
+    p, li { color: var(--text-dim); }
+    p { margin: 0 0 1em; }
+
+    ul, ol {
+      margin: 0 0 1em;
+      padding-left: 1.5em;
+    }
+    li { margin-bottom: .4em; }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .highlight-box p:last-child { margin: 0; }
+    .highlight-box strong { color: var(--text); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: .92rem;
+    }
+    th, td {
+      text-align: left;
+      padding: .75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    th {
+      color: var(--text);
+      font-weight: 700;
+      background: var(--surface);
+    }
+    .table-wrap { overflow-x: auto; }
+
+    /* --- footer --- */
+    footer {
+      text-align: center;
+      padding: 2.5rem 0 2rem;
+      position: relative;
+      color: var(--text-faint);
+      font-size: .82rem;
+    }
+    footer::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 5%, var(--green-deep) 30%, var(--yellow-deep) 70%, transparent 95%);
+    }
+    footer p { margin: 0; }
+
+    @media (max-width: 500px) {
+      .container { padding: 2rem 16px 1.5rem; }
+      .top-bar { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <a href="../">
+        <img src="../assets/icon.png" alt="" class="brand-icon">
+        <span class="brand-text">Fare<strong>Zero</strong></span>
+      </a>
+      <a href="../">&larr; Torna al sito</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <h1>Privacy e Cookie Policy</h1>
+    <p class="last-update">Ultimo aggiornamento: 14 settembre 2026</p>
+
+    <h2>1. Titolare del trattamento</h2>
+    <div class="highlight-box">
+      <p><strong>Fare Zero Makers Fab Lab</strong><br>
+      Associazione di Promozione Sociale (APS)<br>
+      Sede legale: c/o Biblioteca Comunale &laquo;G. Calò&raquo;, Via Barbaro Forleo 1, 72021 Francavilla Fontana (BR)<br>
+      Email: <a href="mailto:info@farezero.org">info@farezero.org</a></p>
+    </div>
+
+    <h2>2. Tipologie di dati raccolti</h2>
+    <p>La navigazione su questo sito non richiede registrazione né compilazione di moduli. I dati trattati si limitano a:</p>
+    <ul>
+      <li><strong>Dati di navigazione</strong>: informazioni che i sistemi informatici acquisiscono automaticamente durante la navigazione (indirizzo IP, tipo di browser, sistema operativo, pagine visitate, orario di accesso). Questi dati sono utilizzati esclusivamente per finalità statistiche anonime e per garantire il corretto funzionamento del sito.</li>
+      <li><strong>Dati forniti volontariamente</strong>: l'invio di un'email o di un messaggio WhatsApp agli indirizzi indicati nella sezione Contatti comporta l'acquisizione dell'indirizzo del mittente e dei dati eventualmente contenuti nel messaggio, necessari per rispondere alla richiesta.</li>
+    </ul>
+
+    <h2>3. Base giuridica e finalità del trattamento</h2>
+    <p>I dati personali sono trattati sulla base delle seguenti basi giuridiche (art. 6 GDPR):</p>
+    <ul>
+      <li><strong>Legittimo interesse</strong> (art. 6.1.f): per il corretto funzionamento del sito e la sicurezza informatica.</li>
+      <li><strong>Consenso</strong> (art. 6.1.a): per l'eventuale installazione di cookie non tecnici, previo consenso esplicito tramite il banner dedicato.</li>
+      <li><strong>Esecuzione di misure precontrattuali</strong> (art. 6.1.b): per rispondere alle richieste di contatto.</li>
+    </ul>
+
+    <h2>4. Cookie</h2>
+    <p>I cookie sono piccoli file di testo che i siti visitati inviano al browser dell'utente per essere memorizzati e ritrasmessi alla visita successiva.</p>
+
+    <h3>4.1 Cookie tecnici (non richiedono consenso)</h3>
+    <p>Questo sito utilizza esclusivamente cookie tecnici di navigazione, necessari al funzionamento del sito e alla memorizzazione delle preferenze dell'utente (ad esempio la scelta relativa al banner cookie). Questi cookie non raccolgono informazioni personali identificabili e non tracciano la navigazione dell'utente su altri siti.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Cookie</th><th>Finalità</th><th>Durata</th><th>Tipo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>fz_cookie_consent</td><td>Memorizza la scelta sul banner cookie</td><td>365 giorni</td><td>Tecnico / prima parte</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>4.2 Cookie di terze parti</h3>
+    <p>Il sito carica risorse da servizi esterni che potrebbero installare cookie propri:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Servizio</th><th>Fornitore</th><th>Finalità</th><th>Policy</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Leaflet / OpenStreetMap</td>
+            <td>OpenStreetMap Foundation</td>
+            <td>Visualizzazione della mappa nella sezione Contatti</td>
+            <td><a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener">Privacy Policy OSM</a></td>
+          </tr>
+          <tr>
+            <td>unpkg CDN</td>
+            <td>Cloudflare</td>
+            <td>Distribuzione della libreria Leaflet</td>
+            <td><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy Policy Cloudflare</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>4.3 Come gestire i cookie</h3>
+    <p>Puoi gestire le preferenze sui cookie in qualsiasi momento tramite le impostazioni del tuo browser. Di seguito i link alle guide dei principali browser:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+      <li><a href="https://support.microsoft.com/it-it/microsoft-edge/eliminare-i-cookie-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+    </ul>
+    <p>La disattivazione dei cookie tecnici potrebbe compromettere il corretto funzionamento di alcune parti del sito.</p>
+
+    <h2>5. Conferimento dei dati e conseguenze del rifiuto</h2>
+    <p>Il conferimento dei dati di navigazione è necessario per la fruizione del sito. Il conferimento dei dati di contatto (email, telefono) è facoltativo: il rifiuto comporta l'impossibilità di rispondere alla richiesta.</p>
+
+    <h2>6. Destinatari dei dati</h2>
+    <p>I dati personali non sono venduti, ceduti o comunicati a terzi, salvo quanto strettamente necessario per il funzionamento tecnico del sito (provider di hosting: Tophost S.r.l.) o per adempiere a obblighi di legge.</p>
+
+    <h2>7. Trasferimento dei dati extra-UE</h2>
+    <p>L'utilizzo di CDN (Cloudflare) e del servizio cartografico OpenStreetMap può comportare il trasferimento di dati di navigazione verso server situati al di fuori dell'Unione Europea. Tali trasferimenti avvengono nel rispetto delle garanzie previste dal GDPR (decisioni di adeguatezza, clausole contrattuali standard).</p>
+
+    <h2>8. Periodo di conservazione</h2>
+    <p>I dati di navigazione sono conservati per il tempo strettamente necessario al funzionamento del sito e vengono cancellati dopo l'elaborazione statistica anonima. I dati forniti via email o messaggistica sono conservati per il tempo necessario a gestire la richiesta e comunque non oltre 24 mesi dall'ultimo contatto.</p>
+
+    <h2>9. Diritti dell'interessato</h2>
+    <p>Ai sensi degli artt. 15-22 del GDPR, hai diritto di:</p>
+    <ul>
+      <li>accedere ai tuoi dati personali;</li>
+      <li>chiederne la rettifica o la cancellazione;</li>
+      <li>chiederne la limitazione del trattamento;</li>
+      <li>opporti al trattamento;</li>
+      <li>richiedere la portabilità dei dati;</li>
+      <li>revocare il consenso in qualsiasi momento, senza pregiudicare la liceità del trattamento basato sul consenso prima della revoca;</li>
+      <li>proporre reclamo all'Autorità Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).</li>
+    </ul>
+    <p>Per esercitare i tuoi diritti, scrivi a <a href="mailto:info@farezero.org">info@farezero.org</a>.</p>
+
+    <h2>10. Contenuti generati con ausilio di intelligenza artificiale</h2>
+    <p>Parte dei contenuti testuali e del codice di questo sito è stata realizzata con l'ausilio di strumenti di intelligenza artificiale generativa, sotto la supervisione e la revisione editoriale dei membri dell'associazione. La responsabilità dei contenuti pubblicati resta in capo al Titolare del trattamento.</p>
+
+    <h2>11. Modifiche alla presente informativa</h2>
+    <p>Il Titolare si riserva il diritto di apportare modifiche alla presente informativa in qualunque momento. La data dell'ultimo aggiornamento è riportata in alto. Si consiglia di consultare periodicamente questa pagina.</p>
+
+    <footer>
+      <p>&copy; 2026 Fare Zero Makers &middot; Fab Lab &middot; <a href="../">farezero.org</a></p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
