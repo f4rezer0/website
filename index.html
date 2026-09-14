@@ -30,6 +30,7 @@
 
     <nav class="main-nav" id="mainNav">
       <ul>
+        <li><a href="#eventi" class="nav-link">Eventi</a></li>
         <li><a href="#chi-siamo" class="nav-link">Chi siamo</a></li>
         <li><a href="#fablab" class="nav-link">Fab Lab</a></li>
         <li><a href="#opensource" class="nav-link">Open Source</a></li>
@@ -62,6 +63,59 @@
       </div>
     </div>
     <a href="#chi-siamo" class="scroll-cue" aria-label="Scorri per saperne di più"><span></span></a>
+  </section>
+
+  <!-- EVENTI -->
+  <section class="section section-alt" id="eventi">
+    <div class="section-inner">
+      <p class="section-tag">Eventi</p>
+      <h2 class="section-title">Prossimi appuntamenti</h2>
+
+      <div class="event-tabs reveal">
+        <div class="event-tab-bar">
+          <button class="event-tab active" data-tab="pucciatech">🍕 PucciaTech</button>
+          <button class="event-tab" data-tab="linuxday">🐧 Linux Day</button>
+        </div>
+
+        <div class="event-tab-panel active" id="tab-pucciatech">
+          <div class="event-card">
+            <div class="event-card-content">
+              <span class="event-badge">Prossimo evento</span>
+              <h3 class="event-card-title">PucciaTech</h3>
+              <p class="event-card-info">📅 25 settembre 2026 &middot; ore 19:00 &middot; 📍 Biblioteca &laquo;G. Calò&raquo;</p>
+              <p class="event-card-desc">Open source, tecnologia e convivialità salentina: talk informali, demo e pucce.</p>
+              <div class="event-countdown" id="ptCountdown">
+                <div class="event-cd-item"><span class="event-cd-num" id="pt-days">--</span><span class="event-cd-label">giorni</span></div>
+                <div class="event-cd-item"><span class="event-cd-num" id="pt-hours">--</span><span class="event-cd-label">ore</span></div>
+                <div class="event-cd-item"><span class="event-cd-num" id="pt-mins">--</span><span class="event-cd-label">min</span></div>
+                <div class="event-cd-item"><span class="event-cd-num" id="pt-secs">--</span><span class="event-cd-label">sec</span></div>
+              </div>
+              <a href="pucciatech/" class="btn btn-primary">Scopri di più</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-tab-panel" id="tab-linuxday">
+          <div class="event-card">
+            <div class="event-card-content">
+              <span class="event-badge">In arrivo</span>
+              <h3 class="event-card-title">Linux Day <span class="event-year">2026</span></h3>
+              <p class="event-card-info">📅 24 ottobre 2026 &middot; 📍 Biblioteca Comunale &laquo;G. Calò&raquo;, Francavilla Fontana</p>
+              <div class="event-countdown" id="ldCountdown">
+                <div class="event-cd-item"><span class="event-cd-num" id="ld-days">--</span><span class="event-cd-label">giorni</span></div>
+                <div class="event-cd-item"><span class="event-cd-num" id="ld-hours">--</span><span class="event-cd-label">ore</span></div>
+                <div class="event-cd-item"><span class="event-cd-num" id="ld-mins">--</span><span class="event-cd-label">min</span></div>
+                <div class="event-cd-item"><span class="event-cd-num" id="ld-secs">--</span><span class="event-cd-label">sec</span></div>
+              </div>
+              <a href="linuxday/" class="btn btn-primary">Scopri di più</a>
+            </div>
+            <div class="event-card-logo">
+              <img src="linuxday/linuxday-logo.svg" alt="Linux Day">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CHI SIAMO -->
@@ -392,5 +446,46 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/script.js"></script>
+<script>
+(function () {
+  function countdown(target, ids, doneId, doneMsg) {
+    function tick() {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        document.getElementById(doneId).innerHTML = doneMsg;
+        return;
+      }
+      document.getElementById(ids[0]).textContent = Math.floor(diff / 86400000);
+      document.getElementById(ids[1]).textContent = Math.floor((diff % 86400000) / 3600000);
+      document.getElementById(ids[2]).textContent = Math.floor((diff % 3600000) / 60000);
+      document.getElementById(ids[3]).textContent = Math.floor((diff % 60000) / 1000);
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  countdown(
+    new Date('2026-09-25T19:00:00+02:00').getTime(),
+    ['pt-days','pt-hours','pt-mins','pt-secs'],
+    'ptCountdown',
+    '<span style="color:var(--yellow);font-weight:800;font-size:1.1rem">\u{1F389} Il PucciaTech è oggi!</span>'
+  );
+  countdown(
+    new Date('2026-10-24T09:00:00+02:00').getTime(),
+    ['ld-days','ld-hours','ld-mins','ld-secs'],
+    'ldCountdown',
+    '<span style="color:var(--yellow);font-weight:800;font-size:1.1rem">\u{1F389} Il Linux Day è oggi!</span>'
+  );
+
+  document.querySelectorAll('.event-tab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.event-tab').forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.event-tab-panel').forEach(function (p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+})();
+</script>
 </body>
 </html>
