@@ -30,6 +30,7 @@
 
     <nav class="main-nav" id="mainNav">
       <ul>
+        <li><a href="#eventi" class="nav-link">Eventi</a></li>
         <li><a href="#chi-siamo" class="nav-link">Chi siamo</a></li>
         <li><a href="#fablab" class="nav-link">Fab Lab</a></li>
         <li><a href="#opensource" class="nav-link">Open Source</a></li>
@@ -62,6 +63,32 @@
       </div>
     </div>
     <a href="#chi-siamo" class="scroll-cue" aria-label="Scorri per saperne di più"><span></span></a>
+  </section>
+
+  <!-- EVENTI -->
+  <section class="section section-alt" id="eventi">
+    <div class="section-inner">
+      <p class="section-tag">Eventi</p>
+      <h2 class="section-title">Prossimi appuntamenti</h2>
+
+      <div class="event-card reveal">
+        <div class="event-card-content">
+          <span class="event-badge">Prossimo evento</span>
+          <h3 class="event-card-title">Linux Day <span class="event-year">2026</span></h3>
+          <p class="event-card-info">📅 24 ottobre 2026 &middot; 📍 Biblioteca Comunale &laquo;G. Calò&raquo;, Francavilla Fontana</p>
+          <div class="event-countdown" id="eventCountdown">
+            <div class="event-cd-item"><span class="event-cd-num" id="ev-days">--</span><span class="event-cd-label">giorni</span></div>
+            <div class="event-cd-item"><span class="event-cd-num" id="ev-hours">--</span><span class="event-cd-label">ore</span></div>
+            <div class="event-cd-item"><span class="event-cd-num" id="ev-mins">--</span><span class="event-cd-label">min</span></div>
+            <div class="event-cd-item"><span class="event-cd-num" id="ev-secs">--</span><span class="event-cd-label">sec</span></div>
+          </div>
+          <a href="linuxday/" class="btn btn-primary">Scopri di più</a>
+        </div>
+        <div class="event-card-logo">
+          <img src="linuxday/linuxday-logo.svg" alt="Linux Day">
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CHI SIAMO -->
@@ -392,5 +419,23 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/script.js"></script>
+<script>
+(function () {
+  var target = new Date('2026-10-24T09:00:00+02:00').getTime();
+  function tick() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      document.getElementById('eventCountdown').innerHTML = '<span style="color:var(--yellow);font-weight:800;font-size:1.1rem">🎉 Il Linux Day è oggi!</span>';
+      return;
+    }
+    document.getElementById('ev-days').textContent = Math.floor(diff / 86400000);
+    document.getElementById('ev-hours').textContent = Math.floor((diff % 86400000) / 3600000);
+    document.getElementById('ev-mins').textContent = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('ev-secs').textContent = Math.floor((diff % 60000) / 1000);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>
