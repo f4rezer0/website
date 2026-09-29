@@ -40,6 +40,11 @@
       </ul>
     </nav>
 
+    <div class="garden-badge" id="gardenBadge" style="display:none">
+      <span class="garden-dot"></span>
+      <span class="garden-label">Giardino</span>
+    </div>
+
     <button class="nav-toggle" id="navToggle" aria-label="Apri il menu" aria-expanded="false" aria-controls="mainNav">
       <span></span><span></span><span></span>
     </button>
@@ -71,10 +76,10 @@
       <p class="section-tag">Eventi</p>
       <h2 class="section-title">Prossimi appuntamenti</h2>
 
-      <div class="event-tabs reveal">
+      <div class="reveal">
         <div class="event-card">
           <div class="event-card-content">
-            <span class="event-badge">Prossimo evento</span>
+            <span class="event-badge">In arrivo</span>
             <h3 class="event-card-title">Linux Day <span class="event-year">2026</span></h3>
             <p class="event-card-info">📅 24 ottobre 2026 &middot; 📍 Biblioteca Comunale &laquo;G. Calò&raquo;, Francavilla Fontana</p>
             <div class="event-countdown" id="ldCountdown">
@@ -90,6 +95,20 @@
           </div>
         </div>
       </div>
+
+      <div class="cal-section reveal" style="margin-top:2.5rem">
+        <h3 class="section-subtitle" style="font-size:1.15rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem">
+          <span style="width:28px;height:2px;background:linear-gradient(90deg,var(--yellow),transparent);flex-shrink:0"></span>
+          Calendario attività
+        </h3>
+        <div class="cal-grid" id="calendarEvents">
+          <div class="cal-empty">Caricamento eventi…</div>
+        </div>
+        <div class="cal-footer">
+          <a href="https://calendar.google.com/calendar/embed?src=96cf05352a109587823a6db3f673f2ac0590896da054040a4aa4d7ab07e0439e%40group.calendar.google.com&ctz=Europe%2FRome" target="_blank" rel="noopener">Vedi il calendario completo &rarr;</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -433,6 +452,8 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/script.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/garden.js"></script>
 <script>
 (function () {
   function countdown(target, ids, doneId, doneMsg) {

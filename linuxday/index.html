@@ -218,20 +218,26 @@
     .program-banner p { color: var(--text-dim); font-size: 1rem; margin: 0; }
     .program-banner strong { color: var(--text); }
 
-    /* --- organizer --- */
+    /* --- organizers --- */
+    .organizers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
     .organizer {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 1.5rem;
-      display: flex; align-items: center; gap: 1.25rem;
-      margin-bottom: 3rem;
-      transition: border-color .3s;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: .75rem;
+      transition: border-color .3s, transform .3s;
     }
-    .organizer:hover { border-color: var(--green); }
-    .organizer .logo-img { height: 54px; flex-shrink: 0; border-radius: 8px; }
-    .organizer .name { font-weight: 700; font-size: 1.05rem; margin-bottom: .15rem; color: var(--text); }
-    .organizer .desc { color: var(--text-dim); font-size: .9rem; margin: 0; }
+    .organizer:hover { border-color: var(--green); transform: translateY(-3px); }
+    .organizer .logo-img { height: 72px; width: auto; object-fit: contain; flex-shrink: 0; border-radius: 8px; }
+    .organizer .name { font-weight: 700; font-size: 1rem; margin-bottom: .1rem; color: var(--text); }
+    .organizer .desc { color: var(--text-dim); font-size: .82rem; margin: 0; line-height: 1.5; }
 
     /* --- sponsors --- */
     .sponsors-grid {
@@ -319,6 +325,9 @@
     footer a:hover { color: var(--yellow); }
 
     /* --- responsive --- */
+    @media (max-width: 700px) {
+      .organizers-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 500px) {
       .info-grid { grid-template-columns: 1fr; }
       .hero-logos { gap: 1rem; }
@@ -327,7 +336,6 @@
       .hero { padding: 3rem 0 2rem; }
       .container { padding: 0 16px; }
       .top-bar { padding: 12px 16px; }
-      .organizer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -385,18 +393,34 @@
       <h2>Programma</h2>
       <div class="program-banner">
         <div class="icon">🔧</div>
-        <p><strong>Programma in via di definizione.</strong><br>
-        Talk, workshop e attività verranno annunciati a breve.<br>Torna a trovarci!</p>
+        <p><strong>Talk la mattina, workshop il pomeriggio.</strong><br>
+        Il programma dettagliato è in via di definizione.<br>Torna a trovarci per gli aggiornamenti!</p>
       </div>
     </section>
 
     <section class="section">
-      <h2>Organizzatore</h2>
-      <div class="organizer">
-        <img src="logo-farezero.jpg" alt="Fare Zero" class="logo-img">
-        <div>
-          <div class="name">Fare Zero Makers &middot; Fab Lab</div>
-          <p class="desc">APS, LUG ufficiale della provincia di Brindisi e Fab Lab. Innovazione sostenibile, open source e community nerd dal 2013.</p>
+      <h2>Organizzano</h2>
+      <div class="organizers-grid">
+        <div class="organizer">
+          <img src="logo-farezero.jpg" alt="Fare Zero" class="logo-img">
+          <div>
+            <div class="name">Fare Zero Makers &middot; Fab Lab</div>
+            <p class="desc">APS, LUG ufficiale della provincia di Brindisi e Fab Lab. Innovazione sostenibile, open source e community nerd dal 2013.</p>
+          </div>
+        </div>
+        <div class="organizer">
+          <img src="logo-tuttingioco.png" alt="Tuttingioco" class="logo-img">
+          <div>
+            <div class="name">Tuttingioco OdV</div>
+            <p class="desc">Associazione di volontariato attiva da oltre 15 anni in Puglia. Promuove inclusione sociale attraverso lo sport e la sensibilizzazione sulla salute mentale.</p>
+          </div>
+        </div>
+        <div class="organizer">
+          <img src="logo-jonixlug.png" alt="JonixLUG" class="logo-img">
+          <div>
+            <div class="name">JonixLUG</div>
+            <p class="desc">Linux User Group di Taranto e provincia, dal 2018 promuove il software libero e la cultura open source sul territorio.</p>
+          </div>
         </div>
       </div>
     </section>
