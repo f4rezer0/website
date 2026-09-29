@@ -17,7 +17,7 @@ jobs:
           FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
           python3 -c '
-          import ftplib, os, ssl
+          import ftplib, os, ssl, socket
 
           host = os.environ["FTP_HOST"]
           user = os.environ["FTP_USER"]
@@ -25,11 +25,15 @@ jobs:
 
           EXCLUDE = {".git", ".github", "node_modules"}
 
+          # Risolvi in IPv4 per evitare "Network is unreachable" su runner GitHub
+          ipv4 = socket.getaddrinfo(host, 21, socket.AF_INET)[0][4][0]
+          print(f"Resolved {host} -> {ipv4}")
+
           ctx = ssl.create_default_context()
           ctx.check_hostname = False
           ctx.verify_mode = ssl.CERT_NONE
 
-          ftp = ftplib.FTP_TLS(host, user, pw, context=ctx)
+          ftp = ftplib.FTP_TLS(ipv4, user, pw, context=ctx)
           ftp.prot_p()
           print(f"Connected to {host}")
 
