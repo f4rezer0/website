@@ -3,14 +3,14 @@
 
   var API_URL = "https://api.farezero.org/garden/status";
   var el = document.getElementById("gardenIndicator");
-  var text = document.getElementById("gardenText");
-  if (!el || !text) return;
+  var status = document.getElementById("gardenStatus");
+  if (!el || !status) return;
 
   function update(state) {
     var isOpen = state && state.open;
     el.classList.toggle("garden-open", isOpen);
     el.classList.toggle("garden-closed", !isOpen);
-    text.innerHTML = isOpen ? "Giardino<br>aperto" : "Giardino<br>chiuso";
+    status.textContent = isOpen ? "aperto" : "chiuso";
     el.style.display = "";
   }
 
