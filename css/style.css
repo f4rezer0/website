@@ -1048,13 +1048,13 @@ ul{ margin:0; padding:0; }
   transition: background .3s, border-color .3s, box-shadow .3s;
 }
 .garden-indicator.garden-open{
-  background: rgba(124,191,95,.18);
-  border: 1.5px solid rgba(124,191,95,.4);
+  background: rgba(40,55,30,.92);
+  border: 1.5px solid rgba(124,191,95,.5);
   box-shadow: 0 0 14px rgba(124,191,95,.2);
 }
 .garden-indicator.garden-closed{
-  background: rgba(255,255,255,.06);
-  border: 1.5px solid var(--border);
+  background: rgba(36,33,32,.92);
+  border: 1.5px solid var(--border-strong);
 }
 
 .garden-leaf{
