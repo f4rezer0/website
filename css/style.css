@@ -1052,20 +1052,22 @@ ul{ margin:0; padding:0; }
   border-color: var(--border-strong);
 }
 
-.fab-garden-dot{
-  width: 18px; height: 18px; border-radius: 50%;
-  transition: background .3s, box-shadow .3s;
+.fab-garden-icon{
+  transition: stroke .3s, filter .3s;
 }
-.fab-garden.garden-open .fab-garden-dot{
-  background: var(--green);
-  animation: garden-pulse 2s ease-in-out infinite;
+.fab-garden.garden-open .fab-garden-icon{
+  stroke: var(--green);
+  filter: drop-shadow(0 0 6px rgba(124,191,95,.5));
 }
-.fab-garden.garden-closed .fab-garden-dot{
-  background: var(--text-faint);
+.fab-garden.garden-closed .fab-garden-icon{
+  stroke: var(--text-faint);
+}
+.fab-garden.garden-open{
+  animation: garden-glow 2.5s ease-in-out infinite;
 }
 
-@keyframes garden-pulse{
-  0%, 100%{ box-shadow: 0 0 0 0 rgba(124,191,95,.6); }
+@keyframes garden-glow{
+  0%, 100%{ box-shadow: 0 0 0 0 rgba(124,191,95,.3); }
   50%{ box-shadow: 0 0 0 8px rgba(124,191,95,0); }
 }
 
