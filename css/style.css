@@ -1083,7 +1083,7 @@ ul{ margin:0; padding:0; }
 @media(max-width:700px){
   .garden-badge{
     position: fixed;
-    bottom: 24px;
+    bottom: 80px;
     left: 16px;
     z-index: 450;
     padding: 10px 18px;
