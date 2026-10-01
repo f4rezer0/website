@@ -10,7 +10,7 @@
     var isOpen = state && state.open;
     el.classList.toggle("garden-open", isOpen);
     el.classList.toggle("garden-closed", !isOpen);
-    text.textContent = isOpen ? "Aperto" : "Chiuso";
+    text.innerHTML = isOpen ? "Giardino<br>aperto" : "Giardino<br>chiuso";
     el.style.display = "";
   }
 
