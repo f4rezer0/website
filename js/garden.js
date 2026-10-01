@@ -2,22 +2,23 @@
   "use strict";
 
   var API_URL = "https://api.farezero.org/garden/status";
-  var badge = document.getElementById("gardenBadge");
-  if (!badge) return;
+  var fab = document.getElementById("gardenFab");
+  var tooltip = document.getElementById("gardenTooltip");
+  if (!fab || !tooltip) return;
 
-  var dot = badge.querySelector(".garden-dot");
-  var label = badge.querySelector(".garden-label");
+  var tooltipTimer = null;
 
   function update(state) {
     var isOpen = state && state.open;
-    badge.classList.toggle("garden-open", isOpen);
-    badge.classList.toggle("garden-closed", !isOpen);
-    dot.classList.toggle("pulse", isOpen);
-    label.textContent = isOpen ? "Giardino aperto" : "Giardino chiuso";
-    badge.title = isOpen
-      ? "Il giardino è aperto dal " + formatDate(state.since)
-      : "Il giardino è attualmente chiuso";
-    badge.style.display = "";
+    fab.classList.toggle("garden-open", isOpen);
+    fab.classList.toggle("garden-closed", !isOpen);
+    fab.style.display = "";
+
+    var msg = isOpen ? "🌿 Giardino aperto" : "🔒 Giardino chiuso";
+    if (isOpen && state.since) {
+      msg += " dal " + formatDate(state.since);
+    }
+    tooltip.textContent = msg;
   }
 
   function formatDate(iso) {
@@ -26,6 +27,26 @@
     return d.toLocaleDateString("it-IT", { day: "numeric", month: "short" }) +
       " " + d.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" });
   }
+
+  fab.addEventListener("click", function () {
+    var open = tooltip.classList.contains("visible");
+    if (open) {
+      tooltip.classList.remove("visible");
+      clearTimeout(tooltipTimer);
+    } else {
+      tooltip.classList.add("visible");
+      tooltipTimer = setTimeout(function () {
+        tooltip.classList.remove("visible");
+      }, 4000);
+    }
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!fab.contains(e.target)) {
+      tooltip.classList.remove("visible");
+      clearTimeout(tooltipTimer);
+    }
+  });
 
   function fetch_status() {
     var xhr = new XMLHttpRequest();
