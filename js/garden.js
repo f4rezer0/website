@@ -2,16 +2,16 @@
   "use strict";
 
   var API_URL = "https://api.farezero.org/garden/status";
-  var strip = document.getElementById("gardenStrip");
+  var el = document.getElementById("gardenIndicator");
   var text = document.getElementById("gardenText");
-  if (!strip || !text) return;
+  if (!el || !text) return;
 
   function update(state) {
     var isOpen = state && state.open;
-    strip.classList.toggle("garden-open", isOpen);
-    strip.classList.toggle("garden-closed", !isOpen);
-    text.textContent = isOpen ? "Giardino aperto" : "Giardino chiuso";
-    strip.style.display = "";
+    el.classList.toggle("garden-open", isOpen);
+    el.classList.toggle("garden-closed", !isOpen);
+    text.textContent = isOpen ? "Aperto" : "Chiuso";
+    el.style.display = "";
   }
 
   function fetch_status() {
