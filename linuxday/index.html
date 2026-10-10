@@ -162,6 +162,24 @@
     }
 
     /* --- info cards --- */
+    .locandina-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .locandina-section img {
+      max-width: 480px;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 40px -10px rgba(0,0,0,.5);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .locandina-section img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px -10px rgba(0,0,0,.6);
+    }
+
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -372,6 +390,12 @@
         <div class="countdown-item"><span class="number" id="cd-secs">--</span><span class="unit">secondi</span></div>
       </div>
     </header>
+
+    <div class="locandina-section">
+      <a href="locandina.jpg" target="_blank">
+        <img src="locandina.jpg" alt="Locandina Linux Day 2026 — 24 ottobre, Biblioteca Comunale G. Calò, Francavilla Fontana">
+      </a>
+    </div>
 
     <div class="info-grid">
       <div class="info-card">
