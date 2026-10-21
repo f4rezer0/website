@@ -1,0 +1,15 @@
+{
+  "name": "Fare Zero — Modelli 3D",
+  "short_name": "FZ 3D",
+  "description": "Esplora i modelli 3D fotogrammetrici di Fare Zero",
+  "start_url": "./app.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1c1a19",
+  "theme_color": "#1c1a19",
+  "icons": [
+    { "src": "../assets/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "../assets/favicon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "../assets/icon.png", "sizes": "166x194", "type": "image/png", "purpose": "any" }
+  ]
+}
