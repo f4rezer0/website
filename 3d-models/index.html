@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelli 3D | Fare Zero</title>
+<meta name="description" content="Esplora i modelli 3D fotogrammetrici realizzati con drone: Chiesa di San Pietro Mandurino e Torre Borraco, nel territorio dell'Alto Salento.">
+
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon-180.png">
+<link rel="shortcut icon" href="../assets/favicon.ico">
+
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer-legacy.js"></script>
+
+<style>
+:root {
+  --bg: #1c1a19;
+  --bg-alt: #242120;
+  --surface: #2c2826;
+  --surface-2: #353030;
+  --border: rgba(255,255,255,.08);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #f3efe7;
+  --text-dim: #b8b1a8;
+  --text-faint: #8a837b;
+  --green: #7cbf5f;
+  --green-deep: #588e42;
+  --yellow: #ecd94f;
+  --yellow-deep: #c9ab1c;
+  --shadow: 0 20px 50px -20px rgba(0,0,0,.6);
+  --radius: 14px;
+  --maxw: 1400px;
+  --header-h: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { line-height: 1.15; margin: 0 0 .5em; font-weight: 800; letter-spacing: -.01em; }
+p { margin: 0 0 1em; color: var(--text-dim); }
+
+::selection { background: var(--green); color: #14130f; }
+
+/* header */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: rgba(28,26,25,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+.header-inner {
+  max-width: var(--maxw);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.brand img {
+  width: 32px;
+  height: 32px;
+}
+.brand strong { color: var(--green); }
+.back-link {
+  color: var(--text-dim);
+  font-size: .9rem;
+  transition: color .2s;
+}
+.back-link:hover { color: var(--green); }
+
+/* hero */
+.page-hero {
+  padding: calc(var(--header-h) + 2rem) 16px 2rem;
+  text-align: center;
+}
+.page-hero .tag {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--green);
+  margin-bottom: .5rem;
+}
+.page-hero h1 {
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  color: var(--text);
+}
+.page-hero p {
+  max-width: 680px;
+  margin: 0 auto 1rem;
+  font-size: 1.05rem;
+}
+
+/* project intro */
+.project-intro {
+  max-width: var(--maxw);
+  margin: 0 auto 2.5rem;
+  padding: 0 16px;
+}
+.intro-inner {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+.credits {
+  display: flex;
+  flex-direction: column;
+  gap: .3em;
+}
+.credits-label {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--text-faint);
+}
+.credits-names {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.credits-org {
+  font-size: .9rem;
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* model section */
+.models {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 16px 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.model-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.model-viewer-wrap {
+  position: relative;
+  width: 100%;
+  height: 60vw;
+  min-height: 300px;
+  max-height: 600px;
+  background: var(--surface);
+}
+
+model-viewer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  --poster-color: transparent;
+}
+model-viewer::part(default-progress-bar) {
+  background: var(--green);
+}
+.mv-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-faint);
+  font-size: .9rem;
+  pointer-events: none;
+  z-index: 1;
+}
+model-viewer.loaded + .mv-loading { display: none; }
+
+.model-info {
+  padding: 1.5rem;
+}
+.model-info h2 {
+  font-size: 1.4rem;
+  margin-bottom: .3em;
+}
+.model-info .location {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  font-size: .88rem;
+  color: var(--text-faint);
+  margin-bottom: .8em;
+}
+.model-info .description {
+  font-size: .95rem;
+  color: var(--text-dim);
+}
+
+/* controls hint */
+.controls-hint {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: 1rem;
+}
+.hint {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  font-size: .8rem;
+  color: var(--text-faint);
+  background: var(--surface);
+  padding: .3em .7em;
+  border-radius: 6px;
+}
+
+/* tabs */
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  padding: 1rem 1.5rem 0;
+}
+.tab-btn {
+  padding: .5em 1.2em;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  transition: background .2s, color .2s;
+}
+.tab-btn.active {
+  background: var(--surface);
+  color: var(--green);
+}
+.tab-btn:hover:not(.active) {
+  color: var(--text);
+}
+
+.tab-panel {
+  display: none;
+}
+.tab-panel.active {
+  display: block;
+}
+
+/* fullscreen button */
+.fs-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(28,26,25,.75);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+}
+.fs-btn:hover { background: var(--green-deep); }
+.fs-btn svg { width: 20px; height: 20px; }
+
+/* fullscreen model-viewer */
+.model-viewer-wrap.fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  aspect-ratio: unset;
+  border-radius: 0;
+}
+
+/* footer */
+.page-footer {
+  text-align: center;
+  padding: 2rem 16px;
+  border-top: 1px solid var(--border);
+  color: var(--text-faint);
+  font-size: .85rem;
+}
+.page-footer a { color: var(--green); }
+
+@media (max-width: 600px) {
+  .model-viewer-wrap { height: 70vw; min-height: 260px; }
+  .model-info { padding: 1rem; }
+  .model-info h2 { font-size: 1.15rem; }
+  .tab-btn { padding: .4em .8em; font-size: .82rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="header-inner">
+    <a href="../" class="brand">
+      <img src="../assets/icon.png" alt="">
+      <span>Fare<strong>Zero</strong></span>
+    </a>
+    <a href="../" class="back-link">&larr; Torna al sito</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <span class="tag">Fotogrammetria con drone</span>
+  <h1>Modelli 3D del territorio</h1>
+  <p>Ricostruzioni fotogrammetriche di siti storici dell'Alto Salento, realizzate con riprese aeree da drone ed elaborate con software libero.</p>
+</section>
+
+<section class="project-intro">
+  <div class="intro-inner">
+    <div class="credits">
+      <span class="credits-label">Realizzato da</span>
+      <span class="credits-names">William Donzelli, Federico Franzoso, Kevin Lucchese, Christian Vasi</span>
+      <span class="credits-org">Fare Zero Makers</span>
+    </div>
+  </div>
+</section>
+
+<div class="models">
+
+  <!-- San Pietro Mandurino -->
+  <article class="model-card" id="san-pietro">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-target="viewer-sp" data-card="san-pietro">Modello 3D</button>
+      <button class="tab-btn" data-target="info-sp" data-card="san-pietro">Informazioni</button>
+    </div>
+
+    <div class="tab-panel active" id="viewer-sp">
+      <div class="model-viewer-wrap" id="wrap-sp">
+        <model-viewer
+          src="san-pietro-mandurino.glb"
+          alt="Modello 3D della Chiesa di San Pietro Mandurino"
+          camera-controls
+          touch-action="pan-y"
+          auto-rotate
+          auto-rotate-delay="2000"
+          rotation-per-second="12deg"
+          camera-orbit="0deg 65deg auto"
+          min-camera-orbit="auto 20deg auto"
+          max-camera-orbit="auto 90deg auto"
+          shadow-intensity="0.4"
+          exposure="1"
+          loading="eager"
+          reveal="auto"
+        >
+          <span slot="progress-bar" class="mv-progress"></span>
+        </model-viewer>
+        <div class="mv-loading">Caricamento modello 3D&hellip;</div>
+        <button class="fs-btn" title="Schermo intero" onclick="toggleFullscreen('wrap-sp')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+            <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="info-sp">
+      <div class="model-info">
+        <h2>Chiesa di San Pietro Mandurino</h2>
+        <span class="location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Manduria (TA), Puglia
+        </span>
+        <p class="description">Ricostruzione fotogrammetrica della chiesa rupestre di San Pietro Mandurino, uno dei siti archeologici e religiosi del territorio di Manduria. Il modello cattura la struttura esterna e il contesto circostante con riprese aeree da drone DJI del 13 ottobre 2026.</p>
+        <div class="controls-hint">
+          <span class="hint">Volo del 13/10/2026</span>
+          <span class="hint">~143 foto</span>
+          <span class="hint">288k vertici</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="model-info" style="border-top: 1px solid var(--border); padding-top: 1rem;">
+      <div class="controls-hint">
+        <span class="hint">🖱 Trascina per ruotare</span>
+        <span class="hint">🤏 Pizzica per zoom</span>
+        <span class="hint">⬆ Due dita per spostare</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- Torre Borraco -->
+  <article class="model-card" id="torre-borraco">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-target="viewer-tb" data-card="torre-borraco">Modello 3D</button>
+      <button class="tab-btn" data-target="info-tb" data-card="torre-borraco">Informazioni</button>
+    </div>
+
+    <div class="tab-panel active" id="viewer-tb">
+      <div class="model-viewer-wrap" id="wrap-tb">
+        <model-viewer
+          src="torre-borraco.glb"
+          alt="Modello 3D di Torre Borraco"
+          camera-controls
+          touch-action="pan-y"
+          auto-rotate
+          auto-rotate-delay="2000"
+          rotation-per-second="12deg"
+          camera-orbit="0deg 65deg auto"
+          min-camera-orbit="auto 20deg auto"
+          max-camera-orbit="auto 90deg auto"
+          shadow-intensity="0.4"
+          exposure="1"
+          loading="eager"
+          reveal="auto"
+        >
+          <span slot="progress-bar" class="mv-progress"></span>
+        </model-viewer>
+        <div class="mv-loading">Caricamento modello 3D&hellip;</div>
+        <button class="fs-btn" title="Schermo intero" onclick="toggleFullscreen('wrap-tb')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+            <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="info-tb">
+      <div class="model-info">
+        <h2>Torre Borraco</h2>
+        <span class="location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Manduria (TA), Puglia
+        </span>
+        <p class="description">Ricostruzione fotogrammetrica di Torre Borraco, torre costiera di avvistamento del XVI secolo sulla litoranea salentina. Il modello cattura la torre e il paesaggio circostante con riprese aeree da drone DJI del 13 ottobre 2026.</p>
+        <div class="controls-hint">
+          <span class="hint">Volo del 13/10/2026</span>
+          <span class="hint">~227 foto</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="model-info" style="border-top: 1px solid var(--border); padding-top: 1rem;">
+      <div class="controls-hint">
+        <span class="hint">🖱 Trascina per ruotare</span>
+        <span class="hint">🤏 Pizzica per zoom</span>
+        <span class="hint">⬆ Due dita per spostare</span>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<footer class="page-footer">
+  <p>Modelli elaborati con <a href="https://www.opendronemap.org/webodm/" target="_blank" rel="noopener">WebODM</a> &middot; <a href="../">farezero.org</a></p>
+</footer>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var card = this.closest('.model-card');
+    card.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    card.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    this.classList.add('active');
+    document.getElementById(this.dataset.target).classList.add('active');
+  });
+});
+
+function toggleFullscreen(wrapId) {
+  var wrap = document.getElementById(wrapId);
+  if (wrap.classList.contains('fullscreen')) {
+    wrap.classList.remove('fullscreen');
+    document.body.style.overflow = '';
+  } else {
+    wrap.classList.add('fullscreen');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+document.querySelectorAll('model-viewer').forEach(function(mv) {
+  mv.addEventListener('load', function() { this.classList.add('loaded'); });
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.model-viewer-wrap.fullscreen').forEach(function(w) {
+      w.classList.remove('fullscreen');
+    });
+    document.body.style.overflow = '';
+  }
+});
+</script>
+</body>
+</html>
