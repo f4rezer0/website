@@ -5,6 +5,7 @@
   var CALENDAR_ID = "96cf05352a109587823a6db3f673f2ac0590896da054040a4aa4d7ab07e0439e@group.calendar.google.com";
   var MAX_EVENTS = 6;
   var SITE_TAG = "#sito";
+  var FEATURED_TAG = "#evidenza";
 
   var container = document.getElementById("calendarEvents");
   if (!container) return;
@@ -63,7 +64,7 @@
     }
 
     var location = event.location || "";
-    var description = (event.description || "").replace(SITE_TAG, "").trim();
+    var description = cleanDescription(event.description);
     if (description.length > 120) {
       description = description.substring(0, 117) + "…";
     }
@@ -91,6 +92,25 @@
     return card;
   }
 
+  // Le descrizioni di Google Calendar possono contenere HTML: le riduce a testo
+  // semplice (DOMParser non esegue script) e toglie i tag del sito.
+  function descriptionText(html) {
+    var text = (html || "").replace(/<br\s*\/?>/gi, "\n").replace(/<\/p>/gi, "\n");
+    return new DOMParser().parseFromString(text, "text/html").body.textContent || "";
+  }
+
+  function cleanDescription(html) {
+    return descriptionText(html)
+      .split(SITE_TAG).join("")
+      .split(FEATURED_TAG).join("")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function hasTag(event, tag) {
+    return (event.description || "").indexOf(tag) !== -1;
+  }
+
   function escapeHtml(str) {
     var d = document.createElement("div");
     d.appendChild(document.createTextNode(str));
@@ -110,6 +130,73 @@
     });
   }
 
+  // Evento in evidenza: il primo evento futuro (o in corso) con #evidenza.
+  // Il link del pulsante e' il primo URL nella descrizione, altrimenti
+  // l'evento su Google Calendar. Un URL che finisce in .png/.jpg/.jpeg/.webp/.svg
+  // viene usato come immagine al posto del logo.
+  function renderFeatured(events) {
+    var box = document.getElementById("featuredEvent");
+    if (!box) return;
+
+    var event = null;
+    for (var i = 0; i < events.length; i++) {
+      if (hasTag(events[i], FEATURED_TAG)) { event = events[i]; break; }
+    }
+    if (!event) return;
+
+    var start = getStart(event);
+    var end = getEnd(event);
+    var text = descriptionText(event.description);
+    var urls = text.match(/https?:\/\/[^\s<>"]+/g) || [];
+    var image = null;
+    var link = null;
+    urls.forEach(function (u) {
+      if (/\.(png|jpe?g|webp|svg)(\?.*)?$/i.test(u)) {
+        if (!image) image = u;
+      } else if (!link) {
+        link = u;
+      }
+    });
+
+    var when = DAYS[start.getDay()] + " " + start.getDate() + " " + MONTHS[start.getMonth()] + " " + start.getFullYear();
+    if (!isAllDay(event)) {
+      when += ", ore " + formatTime(start);
+      if (event.end && event.end.dateTime) when += " – " + formatTime(end);
+    }
+
+    document.getElementById("fe-title").textContent = event.summary || "Evento";
+    document.getElementById("fe-info").textContent =
+      "📅 " + when + (event.location ? " · 📍 " + event.location : "");
+    document.getElementById("fe-link").href = link || event.htmlLink;
+    if (image) {
+      var img = document.getElementById("fe-img");
+      img.src = image;
+      img.alt = event.summary || "";
+    }
+
+    var badge = document.getElementById("fe-badge");
+    var cd = document.getElementById("fe-countdown");
+    var ids = ["fe-days", "fe-hours", "fe-mins", "fe-secs"];
+    var timer;
+    function tick() {
+      var diff = start - Date.now();
+      if (diff <= 0) {
+        badge.textContent = "In corso";
+        cd.innerHTML = '<span style="color:var(--yellow);font-weight:800;font-size:1.1rem">\u{1F389} L\'evento è iniziato!</span>';
+        clearInterval(timer);
+        return;
+      }
+      document.getElementById(ids[0]).textContent = Math.floor(diff / 86400000);
+      document.getElementById(ids[1]).textContent = Math.floor((diff % 86400000) / 3600000);
+      document.getElementById(ids[2]).textContent = Math.floor((diff % 3600000) / 60000);
+      document.getElementById(ids[3]).textContent = Math.floor((diff % 60000) / 1000);
+    }
+    timer = setInterval(tick, 1000);
+    tick();
+
+    box.hidden = false;
+  }
+
   function fetchEvents() {
     var now = new Date().toISOString();
     var url = "https://www.googleapis.com/calendar/v3/calendars/" +
@@ -126,8 +213,9 @@
         try {
           var data = JSON.parse(xhr.responseText);
           var all = data.items || [];
+          renderFeatured(all);
           var filtered = all.filter(function (e) {
-            return (e.description || "").indexOf(SITE_TAG) !== -1;
+            return hasTag(e, SITE_TAG);
           });
           render(filtered.slice(0, MAX_EVENTS));
         } catch (e) {
