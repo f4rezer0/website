@@ -195,6 +195,9 @@
     tick();
 
     box.hidden = false;
+    // Il riquadro compare dopo la risposta del calendario: se l'utente ha gia'
+    // superato quel punto, l'animazione "reveal" non scatterebbe piu'.
+    box.classList.add("is-visible");
   }
 
   function fetchEvents() {
