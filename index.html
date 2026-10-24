@@ -76,18 +76,18 @@
         <div class="event-card">
           <div class="event-card-content">
             <span class="event-badge">In arrivo</span>
-            <h3 class="event-card-title">Linux Day <span class="event-year">2026</span></h3>
-            <p class="event-card-info">📅 24 ottobre 2026 &middot; 📍 Biblioteca Comunale &laquo;G. Calò&raquo;, Francavilla Fontana</p>
-            <div class="event-countdown" id="ldCountdown">
-              <div class="event-cd-item"><span class="event-cd-num" id="ld-days">--</span><span class="event-cd-label">giorni</span></div>
-              <div class="event-cd-item"><span class="event-cd-num" id="ld-hours">--</span><span class="event-cd-label">ore</span></div>
-              <div class="event-cd-item"><span class="event-cd-num" id="ld-mins">--</span><span class="event-cd-label">min</span></div>
-              <div class="event-cd-item"><span class="event-cd-num" id="ld-secs">--</span><span class="event-cd-label">sec</span></div>
+            <h3 class="event-card-title">Bibliogame <span class="event-year">Halloween Edition</span></h3>
+            <p class="event-card-info">📅 30 ottobre 2026, ore 18:00 &middot; 📍 Biblioteca Comunale &laquo;G. Calò&raquo;, Francavilla Fontana</p>
+            <div class="event-countdown" id="bgCountdown">
+              <div class="event-cd-item"><span class="event-cd-num" id="bg-days">--</span><span class="event-cd-label">giorni</span></div>
+              <div class="event-cd-item"><span class="event-cd-num" id="bg-hours">--</span><span class="event-cd-label">ore</span></div>
+              <div class="event-cd-item"><span class="event-cd-num" id="bg-mins">--</span><span class="event-cd-label">min</span></div>
+              <div class="event-cd-item"><span class="event-cd-num" id="bg-secs">--</span><span class="event-cd-label">sec</span></div>
             </div>
-            <a href="linuxday/" class="btn btn-primary">Scopri di più</a>
+            <a href="#nerdspace" class="btn btn-primary">Scopri di più</a>
           </div>
-          <div class="event-card-logo">
-            <img src="linuxday/linuxday-logo.svg" alt="Linux Day">
+          <div class="event-card-logo" style="font-size:7rem;line-height:1;text-align:center" role="img" aria-label="Zucca di Halloween">
+            🎃
           </div>
         </div>
       </div>
@@ -506,10 +506,10 @@
   }
 
   countdown(
-    new Date('2026-10-24T09:00:00+02:00').getTime(),
-    ['ld-days','ld-hours','ld-mins','ld-secs'],
-    'ldCountdown',
-    '<span style="color:var(--yellow);font-weight:800;font-size:1.1rem">\u{1F389} Il Linux Day è oggi!</span>'
+    new Date('2026-10-30T18:00:00+01:00').getTime(),
+    ['bg-days','bg-hours','bg-mins','bg-secs'],
+    'bgCountdown',
+    '<span style="color:var(--yellow);font-weight:800;font-size:1.1rem">\u{1F383} Il Bibliogame è iniziato!</span>'
   );
   // Cookie banner
   var banner = document.getElementById('cookieBanner');
