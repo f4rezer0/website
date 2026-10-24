@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Fare Zero</title>
+  <link rel="icon" href="../assets/favicon.ico">
+  <!-- Senza JavaScript: rimanda comunque alla home dopo 2 secondi -->
+  <meta http-equiv="refresh" content="2; url=/">
+  <script>
+    // Conta l'accesso su GoatCounter (senza cookie) e poi rimanda alla home.
+    (function () {
+      var done = false;
+      function go() {
+        if (done) return;
+        done = true;
+        location.replace('/');
+      }
+      var img = new Image();
+      img.onload = img.onerror = go;
+      img.src = 'https://farezero.goatcounter.com/count?p=' + encodeURIComponent('/nfc') +
+        '&r=' + encodeURIComponent(document.referrer) + '&rnd=' + Date.now();
+      setTimeout(go, 1000);
+    })();
+  </script>
+</head>
+<body>
+  <noscript><img src="https://farezero.goatcounter.com/count?p=/nfc" alt="" width="1" height="1"></noscript>
+  <p><a href="/">Vai a farezero.org</a></p>
+</body>
+</html>
