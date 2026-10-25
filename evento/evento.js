@@ -71,11 +71,23 @@
       $("ev-map").hidden = true;
     }
 
-    var body = C.descriptionBody(event.description);
+    var body = C.descriptionBody(event.description, true);
     if (body) {
       fillLinked($("ev-desc"), body);
       $("ev-desc-section").hidden = false;
     }
+
+    // Ogni link della descrizione diventa un pulsante (es. moduli di iscrizione)
+    extras.links.forEach(function (l, i) {
+      var a = document.createElement("a");
+      a.className = i === 0 ? "btn btn-primary" : "btn btn-ghost";
+      a.href = l.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = l.label;
+      $("ev-links").appendChild(a);
+    });
+    $("ev-links").hidden = extras.links.length === 0;
 
     $("ev-gcal").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
       "&text=" + encodeURIComponent(title) +

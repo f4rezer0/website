@@ -7,7 +7,11 @@
   var SITE_TAG = "#sito";
   var FEATURED_TAG = "#evidenza";
   // "#icona 🎃" nella descrizione: emoji mostrata al posto del logo
-  var ICON_RE = /#icona[ \t ]*(\S+)/i;
+  var ICON_RE = /#icona[ \t\u00a0]*(\S+)/i;
+  // "#pagina https://..." nella descrizione: pagina fatta a mano per l'evento
+  var PAGE_RE = /#pagina[ \t\u00a0]*(https?:\/\/\S+)/i;
+  var URL_RE = /https?:\/\/[^\s<>"]+/g;
+  var IMAGE_RE = /\.(png|jpe?g|webp|svg)(\?.*)?$/i;
 
   // Luoghi noti: indirizzo del calendario -> nome da mostrare
   var PLACES = [
@@ -74,13 +78,20 @@
     return new DOMParser().parseFromString(text, "text/html").body.textContent || "";
   }
 
-  // Testo della descrizione senza i tag del sito, con gli a capo
-  function descriptionBody(html) {
-    return descriptionText(html)
+  // Testo della descrizione senza i tag del sito, con gli a capo.
+  // Con withoutLinks toglie anche le righe con un link (mostrati come pulsanti).
+  function descriptionBody(html, withoutLinks) {
+    var text = descriptionText(html).replace(PAGE_RE, "");
+    if (withoutLinks) {
+      text = text.split("\n").filter(function (line) {
+        return !/https?:\/\//.test(line);
+      }).join("\n");
+    }
+    return text
       .replace(ICON_RE, "")
       .split(SITE_TAG).join("")
       .split(FEATURED_TAG).join("")
-      .replace(/[ \t ]+\n/g, "\n")
+      .replace(/[ \t\u00a0]+\n/g, "\n")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
@@ -93,21 +104,36 @@
     return (event.description || "").indexOf(tag) !== -1;
   }
 
-  // Dati extra presi dalla descrizione: icona, immagine e link
+  // Testo del pulsante per un link: quello scritto prima del link sulla
+  // stessa riga (es. "Iscrizione bambini: https://..."), altrimenti generico.
+  function linkLabel(before, url) {
+    var label = before.replace(/#\S+/g, "").replace(/[\s:\-–→]+$/, "").trim();
+    if (label) return label;
+    return /forms\.gle|docs\.google\.com\/forms/.test(url) ? "Iscriviti" : "Apri il link";
+  }
+
+  // Dati extra presi dalla descrizione: icona, immagine, pagina e link
   function eventExtras(event) {
     var text = descriptionText(event.description);
     var icon = text.match(ICON_RE);
-    var urls = text.match(/https?:\/\/[^\s<>"]+/g) || [];
+    var page = text.match(PAGE_RE);
     var image = null;
-    var link = null;
-    urls.forEach(function (u) {
-      if (/\.(png|jpe?g|webp|svg)(\?.*)?$/i.test(u)) {
-        if (!image) image = u;
-      } else if (!link) {
-        link = u;
+    var links = [];
+    text.replace(PAGE_RE, "").split("\n").forEach(function (line) {
+      var last = 0;
+      var m;
+      URL_RE.lastIndex = 0;
+      while ((m = URL_RE.exec(line))) {
+        var url = m[0];
+        if (IMAGE_RE.test(url)) {
+          if (!image) image = url;
+        } else {
+          links.push({ url: url, label: linkLabel(line.slice(last, m.index), url) });
+        }
+        last = m.index + url.length;
       }
     });
-    return { icon: icon ? icon[1] : null, image: image, link: link };
+    return { icon: icon ? icon[1] : null, image: image, page: page ? page[1] : null, links: links };
   }
 
   function placeName(location) {
@@ -165,10 +191,10 @@
     return null;
   }
 
-  // Link alla pagina dell'evento: un link nella descrizione (es. una pagina
-  // fatta a mano come linuxday/) ha la precedenza sulla pagina automatica.
+  // Link alla pagina dell'evento: "#pagina" (es. una pagina fatta a mano come
+  // linuxday/) ha la precedenza sulla pagina automatica.
   function eventPageUrl(event, base) {
-    return eventExtras(event).link || (base || "") + "evento/?id=" + encodeURIComponent(event.id);
+    return eventExtras(event).page || (base || "") + "evento/?id=" + encodeURIComponent(event.id);
   }
 
   // Countdown nei 4 elementi ids (giorni, ore, minuti, secondi)
@@ -283,7 +309,7 @@
 
     var link = document.getElementById("fe-link");
     link.href = eventPageUrl(event);
-    if (!extras.link) {
+    if (!extras.page) {
       link.removeAttribute("target");
       link.removeAttribute("rel");
     }
