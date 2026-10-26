@@ -160,6 +160,22 @@ h1{
   border-radius: 6px;
   padding: .1em .4em;
 }
+.logo-strip{
+  display: flex; flex-wrap: wrap;
+  justify-content: center; align-items: center;
+  gap: 1rem;
+  margin: 1.75rem 0 1.25rem;
+}
+.post-body .logo-tile{
+  display: flex; align-items: center; justify-content: center;
+  background: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: .6rem 1rem;
+  transition: transform .25s;
+}
+.post-body a.logo-tile:hover{ transform: scale(1.04); }
+.logo-tile img{ height: 56px; width: auto; max-width: 160px; object-fit: contain; }
 .post-body .punch{
   font-size: 1.2rem;
   font-weight: 700;
