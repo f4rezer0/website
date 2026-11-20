@@ -43,7 +43,7 @@ Per sbloccare: tieni premuti insieme **Indietro + Panoramica** (o il gesto equiv
 
 Dopo il primo caricamento completo (entrambi i modelli visualizzati almeno una volta), l'app funziona senza connessione. I file 3D (~37 MB) restano nella cache del browser.
 
-Se aggiorni i modelli o l'app, cambia il numero di versione della cache in `3d-models/sw.js` (riga `var CACHE = 'fz3d-v3';`, per esempio in `fz3d-v4`): al successivo collegamento i tablet scaricano la nuova versione. Se non basta, svuota la cache: Impostazioni Android → App → Chrome → Spazio di archiviazione → Svuota cache.
+Se aggiorni i modelli o l'app, cambia il numero di versione della cache in `3d-models/sw.js` (riga `var CACHE = 'fz3d-v4';`, per esempio in `fz3d-v5`): al successivo collegamento i tablet scaricano la nuova versione. Se non basta, svuota la cache: Impostazioni Android → App → Chrome → Spazio di archiviazione → Svuota cache.
 
 ## Cambiare il PIN
 

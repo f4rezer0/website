@@ -1,5 +1,5 @@
 // Cambia il numero quando aggiorni i modelli o i file dell'app: i tablet scaricano la nuova versione.
-var CACHE = 'fz3d-v3';
+var CACHE = 'fz3d-v4';
 
 // File dell'app: servono tutti, senza questi l'installazione fallisce.
 var CORE = [
