@@ -3,12 +3,26 @@ name: Deploy to Tophost
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # L'app dei modelli 3D vive in una repo a parte e viene pubblicata in /3d-models.
+      # Se questo passo fallisce il deploy si ferma prima di toccare il sito.
+      - name: Scarica app modelli 3D (f4rezer0/geo_metra)
+        uses: actions/checkout@v4
+        with:
+          repository: f4rezer0/geo_metra
+          ref: main
+          path: 3d-models
+          persist-credentials: false
+
+      - name: Togli da 3d-models i file che non vanno online
+        run: rm -rf 3d-models/.git 3d-models/.github 3d-models/README.md 3d-models/LICENSE 3d-models/LICENSE-CONTENT.md
 
       - name: Sync files to server
         uses: appleboy/scp-action@v0.1.7

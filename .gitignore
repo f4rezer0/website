@@ -28,3 +28,6 @@ node_modules/
 *.tmp
 debug.html
 test-*.html
+
+# App modelli 3D: vive in f4rezer0/geo_metra, scaricata dal deploy
+3d-models/

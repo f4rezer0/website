@@ -101,6 +101,10 @@ Attenzione:
 - il deploy usa `mirror --delete`: **un file cancellato dal repo viene cancellato anche dal sito**. Non caricate file sul server via FTP a mano: verrebbero cancellati al deploy successivo;
 - le credenziali FTP e SSH sono nei *secrets* del repo (Settings → Secrets and variables → Actions), non nel codice.
 
+### App dei modelli 3D
+
+La cartella `3d-models/` di farezero.org viene dalla repo [f4rezer0/geo_metra](https://github.com/f4rezer0/geo_metra) (branch `main`), scaricata dal deploy. Per aggiornare l'app o i modelli si lavora in quella repo; **poi serve un nuovo deploy del sito**: **Actions → Deploy to Tophost → Run workflow** (non parte da solo). Il sito non contiene più quei file: non ricrearli qui, il deploy li sovrascrive.
+
 ### Modificare un file da telefono
 
 Su github.com: aprite il file, matita ✏️, modificate e premete **Commit changes** su `main`. Il deploy parte da solo.
@@ -123,7 +127,7 @@ Dopo una modifica a `css/style.css` o ai file in `js/`, aumentate il numero di v
 | `evento/` | pagina automatica dell'evento |
 | `linuxday/` | pagina fatta a mano del Linux Day 2026 |
 | `nfc/` | redirect con conteggio per i tag NFC |
-| `3d-models/` | visualizzatore modelli 3D per tablet (vedi `3d-models/GUIDA-TABLET.md`) |
+| `3d-models/` | non è in questa repo: l'app dei modelli 3D sta in [f4rezer0/geo_metra](https://github.com/f4rezer0/geo_metra) e viene scaricata durante il deploy (vedi sotto) |
 | `privacy/` | privacy e cookie policy |
 
 Se aggiungete un servizio esterno (script, font, contatori), aggiornate la tabella dei servizi di terze parti in `privacy/index.html`.
